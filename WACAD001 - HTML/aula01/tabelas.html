@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Mostra tabela em html</title>
+</head> 
+
+<body>
+    <h1>Web Academy</h1>
+    <table border="1"> <!--esse tipo de borda nao se usa mais, agora e no css-->
+        <caption>Tabela 1 - Descricao da tabela</caption>
+        <thead> <!--teg de cabecalho do titulo-->
+            <tr> 
+                <th colspan="2">Nome e Email</th> <!--isso pode ser usado para criar o nome da tabela por exemplo-->
+                <th>Sala</th> <!--tag de titulo das colunas-->
+                <th>Grupo</th>
+            </tr>
+        </thead>
+        <tbody> <!--linhas relacionadas com o corpo do conteudo-->
+            <tr>
+                <td>Messyas</td> <!--tag para criar um campo-->
+                 <td>messyasgoisfranca@hotmail.com</td>
+                 <td>234</td>
+                 <td rowspan="2">BDRI</td> <!--ocupa o espaco de duas colunas-->
+             </tr>
+             <tr>
+                 <td>julia</td>
+                 <td>julia@hotmail.com</td>
+                 <td>1113</td>
+             </tr>
+         </tbody>
+         <tfoot>
+            <p>informacoes da tabela</p>
+         </tfoot>
+        
+    </table>
+
+
+</body>
+</html>

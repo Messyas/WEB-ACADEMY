@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História do HTML</title>
+</head>
+<style>
+    * {
+        background: rgb(50, 25, 94);
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: rgb(255, 255, 255);
+    }
+
+    h1, pre {
+        color: rgb(208, 0, 255);
+    }
+
+    strong {
+        color: rgb(91, 68, 219);
+    }
+</style>
+<body>
+    <h1>História do HTML</h1>
+
+    <p><strong>Tim Berners-Lee</strong> (Físico britânico) criou o HTML original (e outros protocolos associados como o HTML), numa 
+        <em>estação NeXTcube</em>, usando o ambiente de desenvolvimento NeXTSTEP internet do CERN. A sua solução, combinada com a então emergente
+        internet pública (que tornar-se-ia a Internet), ganhou a atenção mundial.
+    </p>
+
+    <h3>Logo do HTML:</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Official_CSS_Logo.svg/2048px-Official_CSS_Logo.svg.png" alt="logo nova do css" width="120" height="120">
+
+    <hr>
+    <h2>Bubble Sort</h2>
+    <p>Exemplo de código <strong>Javascript</strong>:</p>
+    <pre>
+        function bubbleSort(array) {
+            for (let i = 0; i < array.length; i++) {
+                for (let j = i + 1; j < array.length; j++) {
+                    if (array[i] > array[j]) {
+                        let aux = array[i];
+                        array[i] = array[j];
+                        array[j] = aux;
+                    }
+                }
+            }
+        }
+        
+        let numeros = [82, 76, 6, 52, 45, 38, 24, 14, 54, 85, 143, 98, 65, 512, 96, 12, 4, 79];
+        bubbleSort(numeros);
+        console.log(numeros);
+        
+        // posso reaproveitar a função para ordenar outro array
+        let outroArray = [1, 5, 34, 2, 6, 7, 8, 12];
+        bubbleSort(outroArray);
+        console.log(outroArray);
+    </pre>
+    <p>
+        O código abaixo usa as tags <strong>sub</strong>, <strong>small</strong> e <strong>sub</strong>:
+        <br>
+        <small>1<sup>2<sup>3</sup><sub>4<sub>5<sup>6<sup>7</sup><sub>8<sub>9</sub></sub></sup></small>
+    </p>
+    <hr>
+</body>
+</html>
