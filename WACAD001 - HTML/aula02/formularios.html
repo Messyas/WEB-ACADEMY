@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como fazer forms</title>
+</head>
+<body>
+    <h1>Form</h1>
+    
+    <fieldset>
+        <form action="processa" method="POST">
+            <label for="some">nome</label>
+            <input id="nome" type="text" name="nome"> <br>
+            <label for="senha">senha</label>
+            <input id="senha" type="password" name="senha"> <br>
+            <label for="senha">email</label>
+            <input id="email" placeholder="Digite seu email" type="email" required> <br>
+            <label for="data">data</label>
+            <input id="data" type="date" name="data"> <br>
+            <label for="idade">idade</label>
+            <input id="idade" placeholder="Selecione sua idade" type="number" name="idade" min="18" max="60 "> <br>
+        </form>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend>Escolha a sua linguagem de programacao</legend>
+        <input type="checkbox" name="lang" value="java"> java <br>
+        <input type="checkbox" name="lang" value="C"> C <br>
+        <input type="checkbox" name="lang" value="js"> JS <br>
+    </fieldset>
+
+    <!--validacao de dados yop e joi-->
+
+    <br>
+    <hr>
+    <form action="processa" method="post">
+        <!--Checked obriga a usar pelo menos uma das ops-->
+        <fieldset>
+            <legend>Escolha seu curso</legend>
+            <input type="radio" name="curso" value="cc" checked>Ciencia da computacao <br> 
+            <input type="radio" name="curso" value="es">Engenharia de software <br>
+            <input type="radio" name="curso" value="ec">Engenharia da computacao <br>
+        </fieldset>
+    </form>
+
+    <input type="file" name="curriculo">
+
+    </fieldset>
+    <textarea name="texto" id="" cols="30" rows="10"></textarea>
+    <br>
+    <input type="reset" value="limpar">
+    <button type="submit">Enviar</button>
+    <!--<input type="submit" value="Enviar"> -- Mesma coisa que buttom-->
+    <br>
+    <select name="area" id="" multiple>
+        <option value="db">Banco de dados</option>
+        <option value="es">Engenharia de software</option>
+    </select>
+</body>
+</html>
