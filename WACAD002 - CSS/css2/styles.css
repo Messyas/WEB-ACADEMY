@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../css2/eldenring.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-position: top;
+}
+
+.conteudo{
+    margin-top: 120px;
+    margin-left: 120px;
+    width: 18%;
+    height: 500px;
+    min-width: 200px;
+    max-width: 600px;
+    border: 4px solid rgb(255, 255, 255);
+    border-radius: 24px;
+    padding: 12px;
+    overflow: auto;
+}
+
+/*position fixed ou absolute -> use r z-index para colocar imagem na frente ou atras de outro elemento.*/
+
+h1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+p {
+    color: white;
+    text-align: justify;
+    text-indent: 20px;
+    /*text-decoration: underline;*/
+    word-spacing: -1px;
+}

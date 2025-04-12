@@ -1,0 +1,13 @@
+.paragrafo {
+    width: 400px;
+    border: 1px solid black;
+    background-image: url(../Aula2/logocss3.png);
+    background-color: aliceblue;
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: 50% 10px;
+    box-shadow: 4px 4px 4px 0px #e53b3b inset, 4px 4px 4px 0px rgb(245, 25, 73), 5px 5px 8px 0px rgb(241, 43, 211), 8px 8px 12px 2px rgb(7, 251, 227); /*valor - valor - bloom - sprad*/
+    padding: 10px;
+    margin: 12px;
+    color: rgb(225, 68, 68);
+}

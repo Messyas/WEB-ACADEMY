@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: row;
+   /* flex-wrap: wrap;*/
+    justify-content: space-around;
+    align-items: center;
+    /*align-content: center; -->e o mecanismo do wrap para centralizar, ele sobrescreve o itens*/
+    background: coral;
+    padding: 5px;
+    gap: 5px; /*distancia de um elemento para o outro*/
+}
+
+.container > div {
+    background-color: cornflowerblue;
+    width: 50px;
+    /*Propriedades dos itens*/
+    flex-grow: 1; /*Determina quanto que os itens crescem*/
+    flex-basis: 80px;
+    flex-shrink: 0; /*Propriedade que diz o quanto ele dinui*/
+}
+
+#limao {
+    flex-grow: 4; /*cresce 4 x mais que o seus itens irmaos*/
+    flex-shrink: 4;
+}
+
+img {
+    width: 30px;
+}
