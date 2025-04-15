@@ -1,0 +1,36 @@
+.container {
+    display: grid;
+    background-color: orange;
+    padding: 10px;
+    gap: 10px;
+    grid-auto-rows: 60px;
+    grid-template-areas: 
+    "header header header header header"                   
+    "nav main main main aside"
+    "footer footer footer footer footer";
+}
+
+.container > * {
+    background-color: purple;
+    padding: 10px;
+}
+
+.container > header {
+    grid-area: header;
+}
+
+.container > main {
+    grid-area: main;
+}
+
+.container > aside {
+    grid-area: aside;
+}
+
+.container > nav {
+    grid-area: nav;
+}
+
+.container > footer {
+    grid-area: footer;
+}

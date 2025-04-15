@@ -1,0 +1,21 @@
+.container {
+    display: grid;
+    background-color: beige;
+    grid-template-columns: 1fr 2fr 1fr; /* 1fr 1fr 1fr dignifica 1/3 */
+    grid-template-rows: 100px 100px;
+    /*grid inplicito*/
+    grid-auto-rows: 100px; /*para lidar com as partes extras fora das linhas normais*/
+    padding: 8px;
+    gap: 10px;
+}
+
+.container > div {
+    background-color: aquamarine;
+    padding: 10px;
+}
+
+.container > div:nth-child(1) {
+    grid-row: 1/3;
+    grid-column: 1/-1;
+    /*treinar*/
+}

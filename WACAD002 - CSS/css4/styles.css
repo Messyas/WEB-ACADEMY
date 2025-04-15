@@ -1,0 +1,42 @@
+.container {
+    display: grid;
+    background-color: white;
+    padding: 10px;
+    gap: 8px;
+    grid-auto-rows: 60px;
+    grid-template-areas: 
+    "vermelho vermelho vermelho vermelho vermelho"                   
+    "verde verde verde roxo roxo"
+    "verde verde verde azul amarelo";
+}
+
+.container > * {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.container > .vermelho {
+    grid-area: vermelho;
+    background-color: red;
+}
+
+.container > .azul {
+    grid-area: azul;
+    background-color: blue;
+}
+
+.container > .roxo {
+    grid-area: roxo;
+    background-color: purple;
+}
+
+.container > .verde {
+    grid-area: verde;
+    background-color: green;
+}
+
+.container > .amarelo {
+    grid-area: amarelo;
+    background-color: yellow;
+}
+
