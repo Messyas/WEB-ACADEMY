@@ -8,11 +8,11 @@ function randomValueFromArray(array){
 }
 
 randomize.addEventListener('click', () => {
-    let storyText = "Estava 94 fahrenheit lá fora, então :insertx: saiu para passear. Quando chegamos no :inserty:, ficaram boquiabertos por alguns instantes, até que :insertz:. Bob viu tudo, mas não se surpreendeu — afinal, :insertx: pesa 300 pounds e era um dia escaldante.";
+  let storyText = "Estava 94 fahrenheit lá fora, então :insertx: saiu para passear. Quando chegamos no :inserty:, ficaram boquiabertos por alguns instantes, até que :insertz:. Bob viu tudo, mas não se surpreendeu — afinal, :insertx: pesa 300 pounds e era um dia escaldante.";
     
-    let insertX = ["Laura, la safrada", "Joven tranquilao, o Tranquilo", "Bia, a orca"];
-    let insertY = ["quarto escuro", "parque ensolarado", "banheiro do parque"];
-    let insertZ = ["soltou uma risadinha", "apareceu um macaco", "olhou de forma meio sus"];
+  let insertX = ["Laura, la safrada", "Joven tranquilao, o Tranquilo", "Bia, a orca"];
+  let insertY = ["quarto escuro", "parque ensolarado", "banheiro do parque"];
+  let insertZ = ["soltou uma risadinha", "apareceu um macaco", "olhou de forma meio sus"];
   
 
   let xItem = randomValueFromArray(insertX);
