@@ -10,17 +10,21 @@ body {
 
 .full-img {
   position: relative;
-  display: block;
-  width: 640px;
-  height: 480px;
+  width: 640px;      
+}
+
+.displayed-img {
+  display: block;      
+  width: 100%;     
+  height: auto;      
 }
 
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 640px;
-  height: 480px;
+  width: 100%;         
+  height: 100%;     
   background-color: rgba(0,0,0,0);
 }
 
