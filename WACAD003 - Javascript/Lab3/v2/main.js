@@ -20,13 +20,29 @@ function randomRGB() {
 
 //construtor of balls
 
-function Ball(x, y, velX, velY, color, size) {
-  this.x = x;
-  this.y = y;
-  this.velX = velX;
-  this.velY = velY;
-  this.color = color;
-  this.size = size;
+class Ball {
+  constructor (x, y, velX, velY, color, size) {
+    this.x = x;
+    this.y = y;
+    this.velX = velX;
+    this.velY = velY;
+    this.color = color;
+    this.size = size;
+  }
+
+}
+
+class triagle extends balls {
+  super ( ) {
+    this.x = x;
+    this.y = y;
+    this.velX = velX;
+    this.velY = velY;
+    this.color = color;
+    this.size = size;
+
+  }
+
 }
 
 //drawing balls 
@@ -111,7 +127,6 @@ Ball.prototype.collisionDetect = function () {
   }
 };
 
-
 function loop() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
   ctx.fillRect(0, 0, width, height);
@@ -123,7 +138,6 @@ function loop() {
   }
 
   requestAnimationFrame(loop);
-  
 
 }
 
