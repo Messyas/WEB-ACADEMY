@@ -38,13 +38,6 @@ Ball.prototype.draw = function () {
   ctx.fill();
 };
 
-let testBall = new Ball(50, 100, 4, 4, "blue", 10);
-
-testBall.x;
-testBall.size;
-testBall.color;
-testBall.draw();
-
 Ball.prototype.update = function () {
   if (this.x + this.size >= width) {
     this.velX = -this.velX;
@@ -121,12 +114,8 @@ function loop() {
     balls[i].update();
     balls[i].collisionDetect();
   }
-
   requestAnimationFrame(loop);
-  
-
 }
-
 loop();
 
 
