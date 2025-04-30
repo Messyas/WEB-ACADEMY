@@ -1,62 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questão 4</title>
-</head>
-
-<body>
-    <h1>Várias listas</h1>
-
-    <p id="lista-titulo" name="lista">Lista de itens:</p>
-
-    <ul class="lista-itens-1">
-        <li id="one" class="hot">item a</li>
-        <li id="two" class="hot">item b</li>
-        <li id="three" class="hot">item c</li>
-        <li id="four">item d</li>
+<style>
+    h1 {
+      width: 350px;
+      padding: 20px;
+      background-color: lightblue;
+    }
+    .lista {
+      width: 350px;
+      padding: 20px;
+      color: white;
+      background-color: lightcoral;
+    }
+  </style>
+  
+  <body>
+    <h1>Questao 03</h1>
+  
+    <h3 id="lista-titulo">Meus itens:</h3>
+  
+    <ul id="lista-itens">
+      <li id="one" class="hot">item a</li>
+      <li id="two" class="hot">item b</li>
+      <li id="three" class="hot">item c</li>
+      <li id="four">item d</li>
     </ul>
+  </body>
 
-    <ul class="lista-itens-2">
-        <li id="one" class="hot">item a</li>
-        <li id="two" class="hot">item b</li>
-        <li id="three" class="hot">item c</li>
-        <li id="four">item d</li>
-    </ul>
+  <script>
+    //Ex a)
+    let h1color = document.querySelector('h1');
+    h1color.style.backgroundColor = 'blue';
+    
+    //Ex b)
+    let newListTitle = document.getElementById('lista-titulo');
+    newListTitle.setAttribute('class', 'sub-titulo'); 
 
-    <ul class="lista-itens-3">
-        <li id="one" class="hot">item a</li>
-        <li id="two" class="hot">item b</li>
-        <li id="three" class="hot">item c</li>
-        <li id="four">item d</li>
-    </ul>
-
-    <ul class="lista-itens-4">
-        <li id="one" class="hot">item a</li>
-        <li id="two" class="hot">item b</li>
-        <li id="three" class="hot">item c</li>
-        <li id="four">item d</li>
-    </ul>
-
-    <script>
-        const lista = document.querySelector(".lista-itens-2");
-
-        const elementos = lista.querySelectorAll('li');
-
-        console.log("=== TODOS OS ELEMENTOS ===")
-        elementos.forEach(element => {
-            console.log(element);
-        });
-
-        console.log("=== ELEMENTOS COM CLASSE HOT ===")
-        elementos.forEach(element => {
-            if (element.classList.contains("hot")) {
-                console.log(element);
-            };
-        });
-    </script>
-</body>
-
-</html>
+    //Ex c) 
+    let hots = document.getElementsByClassName('hot');
+    for (let hot of hots) {
+        hot.style.fontWeight = 'bold';
+    }
+  </script>
