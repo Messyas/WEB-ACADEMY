@@ -14,10 +14,14 @@
 </body>
 
 <script>
-    let startItem = document.getElementById('ul')[0];
-    let firstItem = startItem.firstChild;
-    let lastItem = startItem.lastChild;
-    console.log(firstItem);
-    console.log(lastItem);
+  // i)
+  let startItem = document.getElementsByTagName('ul')[0];
+  let firstItem = startItem.firstElementChild;
+  let lastItem = startItem.lastElementChild;
+  console.log(firstItem);
+  console.log(lastItem);
 
+  console.log('\n')
+
+  
 </script>
