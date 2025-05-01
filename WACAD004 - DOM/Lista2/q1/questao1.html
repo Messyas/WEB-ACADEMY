@@ -21,10 +21,20 @@
   console.log(firstItem);
   console.log(lastItem);
 
-  console.log('\n')
+  console.log('\n');
 
   // ii)
   let fatherElement = startItem.parentNode;
   console.log(fatherElement);
+
+  console.log('\n');
+
+  // iii)
+  let allChild = startItem.childNodes;
+  for (child of allChild) {
+    console.log(child);
+  }
+
+  console.log('\n');
 
 </script>
