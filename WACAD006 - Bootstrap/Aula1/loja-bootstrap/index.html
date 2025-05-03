@@ -8,8 +8,27 @@
  </head>
   <body>
     <!-- navbar -->
-     //nome qualquer, que tenha um link pra propria pagina - link para o inicio e um botao sair
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">Loja do Calvo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">gerenciar produtos</a>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-secondary">
+            sair
+          </button>
+        </div>
+      </div>
+    </nav>
     <!-- navbar -->
 
     <!-- listagem de produtos -->
@@ -17,7 +36,16 @@
         <h5 class="mt-4 mb-4">Produtos: </h5>
       <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4">
         <div class="col">
-          <div class="p-3 border bg-light rounded-1">Coluna 1</div>
+          <div class="card">
+            <img src="./assets/placeholder-image.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Bicicleta</h5>
+              <p class="card-text">R$ 1.000,00</p>
+              <button class="btn btn-primary">
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </div>
         </div>
         <div class="col">
           <div class="p-3 border bg-light rounded-1">Coluna 2</div>
