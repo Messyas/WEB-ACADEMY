@@ -51,5 +51,9 @@
         input.focus();
     });
 
-    
+    btnRemove.addEventListener('click', () => {
+        if (lista.children.length > 0) {
+            lista.removeChild(lista.lastElementChild);
+        };
+    });
 </script>
