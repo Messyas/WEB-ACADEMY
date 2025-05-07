@@ -26,8 +26,7 @@
           <button 
             type="button" 
             class="btn btn-outline-secondary"  
-            onclick="window.location.href='./login.html';"
-            >
+            onclick="window.location.href='./login.html';">
             sair
           </button>
         </div>
@@ -43,8 +42,8 @@
           Novo produto
         </button>
       </div>
-      <div class="d-sm-block">
-        <table class="table table-striped align-middle table-responsive-sm">
+      <div class="table-responsive-sm">
+        <table class="table table-striped align-middle m-1">
           <thead>
             <tr>
               <th scope="col">id</th>
@@ -58,14 +57,35 @@
             <tr>
               <th scope="row">1</th>
               <td>Elden Ring</td>
-              <td>R$ 177,00</td>
+              <td >R$ 177,00</td>
               <td>1900</td>
               <td>
                 <div class="d-flex justify-content-start gap-2">
-                  <button type="button" class="btn btn-dark">
+                  <!-- versao pequena -->
+                  <button 
+                    type="button"
+                    class="btn btn-dark btn-sm d-md-none"
+                  >
                     Editar
                   </button>
-                  <button type="button" class="btn btn-danger ">
+                  <button 
+                    type="button"
+                    class="btn btn-danger btn-sm d-md-none"
+                  >
+                    Excluir
+                  </button>
+                
+                  <!-- versao normal-->
+                  <button
+                    type="button"
+                    class="btn btn-dark d-none d-md-inline-block"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger d-none d-md-inline-block"
+                  >
                     Excluir
                   </button>
                 </div>
@@ -78,10 +98,31 @@
               <td>2031</td>
               <td>
                 <div class="d-flex justify-content-start gap-2">
-                  <button type="button" class="btn btn-dark">
+                  <!-- versao pequena -->
+                  <button 
+                    type="button"
+                    class="btn btn-dark btn-sm d-md-none"
+                  >
                     Editar
                   </button>
-                  <button type="button" class="btn btn-danger ">
+                  <button 
+                    type="button"
+                    class="btn btn-danger btn-sm d-md-none"
+                  >
+                    Excluir
+                  </button>
+                
+                  <!-- versao normal-->
+                  <button
+                    type="button"
+                    class="btn btn-dark d-none d-md-inline-block"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger d-none d-md-inline-block"
+                  >
                     Excluir
                   </button>
                 </div>
@@ -94,10 +135,31 @@
               <td>42092</td>
               <td>
                 <div class="d-flex justify-content-start gap-2">
-                  <button type="button" class="btn btn-dark">
+                  <!-- versao pequena -->
+                  <button 
+                    type="button"
+                    class="btn btn-dark btn-sm d-md-none"
+                  >
                     Editar
                   </button>
-                  <button type="button" class="btn btn-danger ">
+                  <button 
+                    type="button"
+                    class="btn btn-danger btn-sm d-md-none"
+                  >
+                    Excluir
+                  </button>
+                
+                  <!-- versao normal-->
+                  <button
+                    type="button"
+                    class="btn btn-dark d-none d-md-inline-block"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger d-none d-md-inline-block"
+                  >
                     Excluir
                   </button>
                 </div>
@@ -110,10 +172,31 @@
               <td class="text-danger">0</td>
               <td>
                 <div class="d-flex justify-content-start gap-2">
-                  <button type="button" class="btn btn-dark">
+                  <!-- versao pequena -->
+                  <button 
+                    type="button"
+                    class="btn btn-dark btn-sm d-md-none"
+                  >
                     Editar
                   </button>
-                  <button type="button" class="btn btn-danger ">
+                  <button 
+                    type="button"
+                    class="btn btn-danger btn-sm d-md-none"
+                  >
+                    Excluir
+                  </button>
+                
+                  <!-- versao normal-->
+                  <button
+                    type="button"
+                    class="btn btn-dark d-none d-md-inline-block"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger d-none d-md-inline-block"
+                  >
                     Excluir
                   </button>
                 </div>
@@ -129,7 +212,7 @@
 
     <!-- modal cadastrar produtos -->
     <div class="modal fade" id="novoProdutoModal" tabindex="-1" aria-labelledby="novoProdutoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document"> <!--centraliza o modal-->
+    <div class="modal-dialog modal-dialog-centered role="document"> <!--centraliza o modal-->
       <div class="modal-content">
         <form id="formNovoProduto">
           <div class="modal-header">
