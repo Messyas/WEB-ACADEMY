@@ -8,6 +8,71 @@
   </head>
   <body>
     <!-- cadastro -->
+      <div class="container-fluid">
+        <div class="row min-vh-100">
+          <!-- coluna esquerda -->
+          <div
+            class="col-12 col-md-4 bg-light d-flex align-items-center justify-content-center">
+            <h4 class="text-center">Bem vindo à Games Strap!</h4>
+          </div>
+  
+          <!-- coluna direita -->
+          <div class="col-12 col-md-7 d-flex align-items-center justify-content-center">
+            <form class="w-40 w-md-75 w-sm-100" action="./produtos.html" method="POST">
+              <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nome"
+                  name="nome"
+                  placeholder="Digite seu nome"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Digite seu E-mail"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="confirmEmail" class="form-label">Confirmar Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="confirmEmail"
+                  name="confirmEmail"
+                  placeholder="Confirme seu E-mail"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="senha"
+                  name="senha"
+                  placeholder="Digite sua senha"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-success w-100"  onclick="window.location.href='./login.html';">
+                Confirmar Cadastro
+              </button>
+              <div class="text-center mt-3">
+                <a href="./login.html" class="text-primary text-decoration-none">já tenho cadastro</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
