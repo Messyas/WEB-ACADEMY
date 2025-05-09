@@ -16,3 +16,6 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
     console.log(`ervidor rodando na porta ${PORT}`);
 });
+
+//-D <-- dependencia de desenvolvimento
+//Ex: npm install -D nodemon
