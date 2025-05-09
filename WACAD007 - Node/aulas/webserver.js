@@ -1,7 +1,7 @@
 const http = require("http");
 const dotenv = require("dotenv");
 
-dotenv.config();
+dotenv.config({ path: `.env.${process.env.PORTNODE_ENV}`});
 
 const PORT = process.env.PORT ?? 8888
 
@@ -19,3 +19,9 @@ server.listen(PORT, () => {
 
 //-D <-- dependencia de desenvolvimento
 //Ex: npm install -D nodemon
+
+//pacote forever - de producao
+
+//npx nodemon
+//npm run start:prod
+
