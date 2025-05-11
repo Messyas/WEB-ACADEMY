@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "npx nodemon index.js \"/home/messyas/Projetos/WEB-ACADEMY-PROJECTS/WEB-ACADEMY/WACAD007 - Node/aula2\"",
-    "start:prod": "node index.js \"/home/messyas/Projetos/WEB-ACADEMY-PROJECTS/WEB-ACADEMY/WACAD007 - Node/aula2\""
+    "start": "NODE_ENV=development npx nodemon index.js \"/home/messyas/Projetos/WEB-ACADEMY-PROJECTS/WEB-ACADEMY/WACAD007 - Node/aula2\"",
+    "start:prod": "NODE_ENV=production node index.js \"/home/messyas/Projetos/WEB-ACADEMY-PROJECTS/WEB-ACADEMY/WACAD007 - Node/aula2\""
   },
   "dependencies": {
     "dotenv": "^16.5.0",
