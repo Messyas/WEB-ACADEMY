@@ -1,5 +1,9 @@
 const http = require('http');
 const fs = require('fs');
+const dotenv = require('dotenv');
+
+dotenv.config();
+const PORT = process.env.PORT ?? 3232;
 
 const pathdir = process.argv[2];
 
@@ -17,4 +21,4 @@ const server = http.createServer(function(req, res) {
     });
 });
 
-server.listen(2122);
+server.listen(PORT);
