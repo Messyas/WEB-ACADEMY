@@ -1,0 +1,62 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background: black;
+}
+
+h1{
+    color: white;
+}
+
+label {
+    color: white;
+}
+
+input {
+    padding: 8px;
+}
+
+.list-info-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 12px;
+    gap: 16px;
+}
+
+.task-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#button-add {
+    padding: 10px;
+    border-radius: 12px;
+    color: black;
+    background: white;
+    transition: 700ms;
+}
+
+#button-add:hover {
+    transition: 300ms;
+    color: rgb(255, 255, 255);
+    background: rgb(121, 121, 121);
+}
+
+#button-remove {
+    padding: 8px;
+    border-radius: 12px;
+    color: white;
+    background: rgb(214, 56, 56);
+}
