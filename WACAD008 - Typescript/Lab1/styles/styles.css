@@ -40,23 +40,67 @@ input {
     gap: 8px;
 }
 
-#button-add {
+.button-add {
     padding: 10px;
     border-radius: 12px;
     color: black;
     background: white;
     transition: 700ms;
+    border: none;
 }
 
-#button-add:hover {
+.button-edit {
+    padding: 8px;
+    border-radius: 12px;
+    color: black;
+    background: white;
+    border: none;
+}
+
+.button-add:hover, .button-edit:hover {
     transition: 300ms;
     color: rgb(255, 255, 255);
-    background: rgb(121, 121, 121);
+    background: black;
+    box-shadow: inset 0 0 0 1px white;
 }
 
-#button-remove {
+.button-remove {
     padding: 8px;
     border-radius: 12px;
     color: white;
     background: rgb(214, 56, 56);
+    border: none;
+    transition: 300ms;
+}
+
+.button-remove:hover {
+    transition: 300ms;
+    color: rgb(214, 56, 56);
+    background: black;
+    box-shadow: inset 0 0 0 1px rgb(214, 56, 56);
+}
+
+.task-item{
+    width: 800px;
+    margin: 8px;
+    border: 1px white solid;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;;
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 8px;
+    gap: 16px;
+}
+
+.task-buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.task-title, .task-meta, .task-description{
+    color: white;
 }

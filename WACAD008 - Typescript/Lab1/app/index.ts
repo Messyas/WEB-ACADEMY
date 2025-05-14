@@ -21,6 +21,30 @@ function addTask(): void {
   taskList.push(newTask);
 
   console.log("Tarefa adiocionada:", newTask);
+  addTaskToList();
+}
+
+function addTaskToList() {
+  const containerList = document.querySelector(
+    ".list-itens-container"
+  ) as HTMLDivElement;
+  containerList.innerHTML = "";
+  taskList.forEach(([id, title, iniDate, finalDate, description]) => {
+    const itemDiv = document.createElement("div");
+    itemDiv.innerHTML = `
+      <div class="task-item">
+        <h3 class="task-title">${title}</h3>
+        <p class="task-meta">Início: ${iniDate.toLocaleString()}</p>
+        <p class="task-meta">Fim: ${finalDate.toLocaleDateString()}</p>
+        <p class="task-description">${description}</p>
+        <div class="task-buttons-container">
+          <button class="button-edit" onclick="EditTask('${id}')">Editar</button>
+          <button class="button-remove" onclick="removeTask('${id}')">Remover</button>
+        </div>
+      </div>
+    `;
+    containerList.appendChild(itemDiv);
+  });
 }
 
 (document.getElementById("button-add") as HTMLButtonElement).addEventListener(
