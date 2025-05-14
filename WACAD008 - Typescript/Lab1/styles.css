@@ -6,13 +6,17 @@
 
 body {
     background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 button {
-    padding: 12px;
+    padding: 8px;
+    border-radius: 12px;
     color: black;
     background: white;
-    border: 1px rgb(110, 13, 200) solid;
 }
 
 .list-container {
@@ -21,6 +25,7 @@ button {
 
 .item-list {
     width: 200px;
+    border-radius: 12px;
     background: white;
     color: black;
 

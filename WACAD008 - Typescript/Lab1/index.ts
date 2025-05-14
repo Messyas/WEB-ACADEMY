@@ -3,6 +3,5 @@ interface Item {
     iniDate: Date,
     finalDate: Date,
     desc: string
-
 }
 
