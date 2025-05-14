@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TodoList</title>
-    <link rel="stylesheet" href="./styles/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
     <div class="list-info-container">
-        <h1>Lembretes/To Do List</h1>
-        <div class="task-info">
-            <label for="title">Título</label>
-            <input id="title" type="text" name="title" placeholder="Digite o título da task" required>
- 
-            <label for="init-date">Data e hora de inicio</label>
-            <input id="init-date" type="datetime-local" name="init-date" required>
+      <h1>Lembretes/To Do List</h1>
+      <div class="task-info">
+        <label for="title">Título</label>
+        <input
+          id="title"
+          type="text"
+          name="title"
+          placeholder="Digite o título da task"
+          required
+        />
 
-            <label for="final-date">Data limite</label>
-            <input id="final-date" type="date" name="final-date">
+        <label for="init-date">Data e hora de inicio</label>
+        <input id="init-date" type="datetime-local" name="init-date" required />
 
-            <label for="description">Descrição</label>
-            <input id="description" type="text" name="description" placeholder="Digite uma descrição"> 
-        </div>
-        
-        <div class="buttons-container">
-            <button id="button-add">Adicionar Item</button>
-        </div>
-        
-        <div class="list-itens-container">
+        <label for="final-date">Data limite</label>
+        <input id="final-date" type="date" name="final-date" />
 
-        </div>
+        <label for="description">Descrição</label>
+        <input
+          id="description"
+          type="text"
+          name="description"
+          placeholder="Digite uma descrição"
+        />
+      </div>
+
+      <div class="buttons-container">
+        <button id="button-add">Adicionar Item</button>
+      </div>
+
+      <div class="list-itens-container"></div>
     </div>
-</body>
-    <script href="./app/index.js"></script>
+    <script src="./app/index.js"></script>
+  </body>
 </html>
