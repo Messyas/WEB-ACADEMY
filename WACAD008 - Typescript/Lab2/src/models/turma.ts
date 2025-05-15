@@ -25,7 +25,10 @@ class turma {
         return (mediaCm / 100).toFixed(2);
     }
 
-    getMediaPesos() {
-
+    getMediaPesos(): string {
+        const numeroAlunos = this.getNumAlunos();
+        const somaTotalKg = this.alunos.reduce((alturaKg, aluno) => alturaKg + aluno.peso, 0);
+        const mediaKg = somaTotalKg / numeroAlunos;
+        return (mediaKg / 100).toFixed(3);
     }
 }
