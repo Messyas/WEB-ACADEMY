@@ -12,9 +12,4 @@ export class Aluno {
         this.altura = altura;
         this.peso = peso;
     }
-
-    get alturaALuno (): string {
-        return (this.altura /100).toFixed(2);
-    }
-
 }

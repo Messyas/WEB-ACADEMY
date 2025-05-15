@@ -14,16 +14,15 @@ class turma {
         this.alunos.push(aluno);
     }
 
-    getNumALunos (): number {
+    getNumAlunos (): number {
         return this.alunos.length;
     }
 
-    getMediaIdades () {
-        
-    }
-
-    getMediaAlturas () {
-
+    getMediaAlturas (): string {
+        const numeroAlunos = this.getNumAlunos();
+        const somaTotalCm = this.alunos.reduce((alturaCm, aluno) => alturaCm + aluno.altura, 0);
+        const mediaCm = somaTotalCm / numeroAlunos;
+        return (mediaCm / 100).toFixed(2);
     }
 
     getMediaPesos() {
