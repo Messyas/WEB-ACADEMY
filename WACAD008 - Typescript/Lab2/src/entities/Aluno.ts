@@ -17,7 +17,7 @@ export class Aluno {
     if (this.peso <= 0) throw new Error("Peso deve ser positivo");
   }
 
-  getId(): string | number {
+  getId(): string {
     return this.id;
   }
 

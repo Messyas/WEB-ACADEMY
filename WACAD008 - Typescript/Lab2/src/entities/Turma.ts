@@ -18,6 +18,10 @@ export class Turma {
     this.alunos.push(aluno);
   }
 
+  public removeAluno(id: string): void {
+    this.alunos = this.alunos.filter(a => a.getId() !== id);
+  }
+
   public getAlunos(): Aluno[] {
     return [...this.alunos];
   }

@@ -10,7 +10,23 @@ export class AlunoController {
   public init(): void {
     const form = document.getElementById("formAluno") as HTMLFormElement;
     form.addEventListener("submit", (e) => this.handleSubmit(e));
+
+    const tabela = document.getElementById("tabela-alunos") as HTMLTableSectionElement;
+    tabela.addEventListener("click", e => this.handleDelete(e));
   }
+
+  private handleDelete(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (!target.classList.contains("btn-excluir")) return;
+
+    const tr = target.closest("tr")!;
+    const id  = tr.dataset.id!;
+    this.turma.removeAluno(id);
+    
+    renderResumo(this.turma);
+    renderTabela(this.turma);
+  }
+
 
   private handleSubmit(event: Event): void {
     event.preventDefault();
