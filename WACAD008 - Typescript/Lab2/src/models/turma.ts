@@ -1,10 +1,14 @@
-import { Aluno } from "./aluno";
-class turma {
+import { Aluno } from "./aluno.ts";
+export class Turma {
   constructor(
     private id: string,
     private nome: string,
     private alunos: Aluno[] = []
   ) {}
+
+  getAlunos(): Aluno[] {
+    return this.alunos;
+  }
 
   addAluno(aluno: Aluno): void {
     this.alunos.push(aluno);
@@ -31,6 +35,6 @@ class turma {
     .reduce((pesos, peso) => pesos + peso,0);
 
     const mediaPesos = totalPesos / numeroAlunos;
-    return (mediaPesos / 100).toFixed(3);
+    return (mediaPesos / 1000).toFixed(3);
   }
 }
