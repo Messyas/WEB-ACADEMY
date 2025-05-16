@@ -85,3 +85,11 @@ let subtract = function (c: number, d: number): number {
 //parametros opcionais
 
 //default pram value melhor pra evitar if dentro do codigo, so nao e indicado se um valor default possa prejudicar o registro
+
+//custom type guard ajuda a evitar problemas de transpilacao incorreta, evita aceitar tipos indesejados ou fora de range
+
+//prisma permite migrar banco mais facil
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+//Injecao de dependencia
