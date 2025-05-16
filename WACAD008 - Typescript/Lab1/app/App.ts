@@ -1,22 +1,22 @@
-import { Task } from './entity/Task.ts';
-import { TaskId } from './value-object/TaskId.ts';
-import { TaskRepository } from './repository/TaskRepository.ts';
-import { FormHandler } from './ui/FormHandler.ts';
-import { Renderer } from './ui/Renderer.ts';
+import { Task } from "./entity/Task.ts";
+import { TaskId } from "./value-object/TaskId.ts";
+import { TaskRepository } from "./repository/TaskRepository.ts";
+import { FormHandler } from "./ui/FormHandler.ts";
+import { Renderer } from "./ui/Renderer.ts";
 
 const repo = new TaskRepository();
 const form = new FormHandler(
-  document.getElementById('title')       as HTMLInputElement,
-  document.getElementById('init-date')   as HTMLInputElement,
-  document.getElementById('final-date')  as HTMLInputElement,
-  document.getElementById('description') as HTMLInputElement
+  document.getElementById("title") as HTMLInputElement,
+  document.getElementById("init-date") as HTMLInputElement,
+  document.getElementById("final-date") as HTMLInputElement,
+  document.getElementById("description") as HTMLInputElement
 );
 const view = new Renderer(
-  document.querySelector('.list-itens-container') as HTMLDivElement
+  document.querySelector(".list-itens-container") as HTMLDivElement
 );
-const submit  = document.getElementById('button-add') as HTMLButtonElement;
+const submit = document.getElementById("button-add") as HTMLButtonElement;
 
-submit.addEventListener('click', () => {
+submit.addEventListener("click", () => {
   const { id, title, ini, fim, desc } = form.readValues();
   const existing = repo.findById(id);
 

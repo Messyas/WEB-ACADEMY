@@ -1,5 +1,5 @@
-import { Task } from '../entity/Task.ts';
-import { TaskId } from '../value-object/TaskId.ts';
+import { Task } from "../entity/Task.ts";
+import { TaskId } from "../value-object/TaskId.ts";
 
 export class TaskRepository {
   private readonly tasks = new Map<string, Task>();

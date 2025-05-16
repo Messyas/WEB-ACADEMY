@@ -1,4 +1,4 @@
-import { TaskId } from '../value-object/TaskId.ts';
+import { TaskId } from "../value-object/TaskId.ts";
 
 export class Task {
   constructor(
@@ -9,17 +9,14 @@ export class Task {
     private description: string
   ) {}
 
-  getId(): TaskId { return this.id; }
+  getId(): TaskId {
+    return this.id;
+  }
 
-  update(
-    title?: string,
-    ini?: Date,
-    fim?: Date,
-    description?: string
-  ): void {
-    if (title)       this.title       = title;
-    if (ini)         this.ini         = ini;
-    if (fim)         this.fim         = fim;
+  update(title?: string, ini?: Date, fim?: Date, description?: string): void {
+    if (title) this.title = title;
+    if (ini) this.ini = ini;
+    if (fim) this.fim = fim;
     if (description) this.description = description;
   }
 
@@ -29,7 +26,7 @@ export class Task {
       this.title,
       this.ini,
       this.fim,
-      this.description
+      this.description,
     ];
   }
 }

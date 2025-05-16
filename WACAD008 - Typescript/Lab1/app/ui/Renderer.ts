@@ -1,17 +1,25 @@
-import { Task } from '../entity/Task.ts';
+import { Task } from "../entity/Task.ts";
 
 export class Renderer {
   constructor(private readonly container: HTMLDivElement) {}
 
-  render(tasks: Task[], onEdit: (id: string) => void, onRemove: (id: string) => void): void {
-    this.container.innerHTML = '';
-    tasks.forEach(task => this.renderOne(task, onEdit, onRemove));
+  render(
+    tasks: Task[],
+    onEdit: (id: string) => void,
+    onRemove: (id: string) => void
+  ): void {
+    this.container.innerHTML = "";
+    tasks.forEach((task) => this.renderOne(task, onEdit, onRemove));
   }
 
-  private renderOne(task: Task, onEdit: (id: string) => void, onRemove: (id: string) => void): void {
-    const [ id, title, ini, fim, desc ] = task.toTuple();
-    const item = document.createElement('div');
-    item.className = 'task-item';
+  private renderOne(
+    task: Task,
+    onEdit: (id: string) => void,
+    onRemove: (id: string) => void
+  ): void {
+    const [id, title, ini, fim, desc] = task.toTuple();
+    const item = document.createElement("div");
+    item.className = "task-item";
 
     item.innerHTML = `
     <h3 class="task-title">${title}</h3>
@@ -23,11 +31,13 @@ export class Renderer {
       <button class="button-remove">Remover</button>
     </div>
   `;
-    item.querySelector<HTMLButtonElement>('.button-edit')!
-      .addEventListener('click', () => onEdit(id));
-    item.querySelector<HTMLButtonElement>('.button-remove')!
-      .addEventListener('click', () => onRemove(id));
-      
+    item
+      .querySelector<HTMLButtonElement>(".button-edit")!
+      .addEventListener("click", () => onEdit(id));
+    item
+      .querySelector<HTMLButtonElement>(".button-remove")!
+      .addEventListener("click", () => onRemove(id));
+
     this.container.appendChild(item);
   }
 }
