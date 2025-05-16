@@ -1,15 +1,17 @@
 export class Aluno {
-    id: string;
-    nome: string;
-    idade: number;
-    altura: number;
-    peso: number;
+  constructor(
+    private id: string,
+    private nome: string,
+    private idade: number,
+    private _altura: number,
+    private _peso: number
+  ) {}
 
-    constructor (id: string, nome: string, idade: number, altura: number, peso: number) {
-        this.id = id;
-        this.nome = nome;
-        this.idade = idade;
-        this.altura = altura;
-        this.peso = peso;
-    }
+  getAltura(): number {
+    return this._altura;
+  }
+
+  getPeso(): number {
+    return this._peso
+  }
 }

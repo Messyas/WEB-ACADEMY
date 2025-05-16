@@ -1,34 +1,36 @@
-import { Aluno } from "./aluno"
+import { Aluno } from "./aluno";
 class turma {
-    id: string;
-    nome: string;
-    alunos: Aluno[];
+  constructor(
+    private id: string,
+    private nome: string,
+    private alunos: Aluno[] = []
+  ) {}
 
-    constructor (id: string, nome: string, alunos?: Aluno[] ) {
-        this.id = id;
-        this.nome = nome;
-        this.alunos = alunos ?? [];
-    }
+  addAluno(aluno: Aluno): void {
+    this.alunos.push(aluno);
+  }
 
-    addAluno (aluno: Aluno): void {
-        this.alunos.push(aluno);
-    }
+  getNumAlunos(): number {
+    return this.alunos.length;
+  }
 
-    getNumAlunos (): number {
-        return this.alunos.length;
-    }
+  getMediaAlturas(): string {
+    const numeroAlunos = this.getNumAlunos();
+    const totalAlturas = this.alunos
+      .map((aluno) => aluno.getAltura())
+      .reduce((alturasSoma, altura) => alturasSoma + altura, 0);
 
-    getMediaAlturas (): string {
-        const numeroAlunos = this.getNumAlunos();
-        const somaTotalCm = this.alunos.reduce((alturaCm, aluno) => alturaCm + aluno.altura, 0);
-        const mediaCm = somaTotalCm / numeroAlunos;
-        return (mediaCm / 100).toFixed(2);
-    }
+    const mediaAlturas = totalAlturas / numeroAlunos;
+    return (mediaAlturas / 100).toFixed(2);
+  }
 
-    getMediaPesos(): string {
-        const numeroAlunos = this.getNumAlunos();
-        const somaTotalKg = this.alunos.reduce((alturaKg, aluno) => alturaKg + aluno.peso, 0);
-        const mediaKg = somaTotalKg / numeroAlunos;
-        return (mediaKg / 100).toFixed(3);
-    }
+  getMediaPesos(): string {
+    const numeroAlunos = this.getNumAlunos();
+    const totalPesos = this.alunos
+    .map((aluno) => aluno.getPeso())
+    .reduce((pesos, peso) => pesos + peso,0);
+
+    const mediaPesos = totalPesos / numeroAlunos;
+    return (mediaPesos / 100).toFixed(3);
+  }
 }
