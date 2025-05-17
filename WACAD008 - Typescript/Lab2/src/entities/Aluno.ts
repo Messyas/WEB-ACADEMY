@@ -7,10 +7,6 @@ export class Aluno {
     private altura: number,
     private peso: number
   ) {
-    this.nome = nome;
-    this.idade = idade;
-    this.altura = altura;
-    this.peso = peso;
     this.validate();
   }
 
@@ -19,6 +15,19 @@ export class Aluno {
     if (this.idade < 0 || this.idade > 120) throw new Error("Idade invalida");
     if (this.altura <= 0) throw new Error("Altura deve ser positiva");
     if (this.peso <= 0) throw new Error("Peso deve ser positivo");
+  }
+
+  public atualizar(
+    nome: string,
+    idade: number,
+    altura: number,
+    peso: number
+  ): void {
+    this.nome = nome;
+    this.idade = idade;
+    this.altura = altura;
+    this.peso = peso;
+    this.validate();
   }
 
   getId(): string {
