@@ -27,6 +27,10 @@ export class AlunoController {
     renderTabela(this.turma);
   }
 
+  private handleUpdateAluno() {
+    
+  }
+
 
   private handleSubmit(event: Event): void {
     event.preventDefault();
