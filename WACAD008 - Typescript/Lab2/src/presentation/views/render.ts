@@ -2,11 +2,8 @@ import { Turma } from "../../entities/Turma.ts";
 import { Aluno } from "../../entities/Aluno.ts";
 
 export function renderResumo(turma: Turma): void {
-  document.getElementById("total-alunos")!.textContent = String(
-    turma.getNumAlunos()
-  );
-  document.getElementById("media-alturas")!.textContent =
-    turma.getMediaAlturas();
+  document.getElementById("total-alunos")!.textContent = String(turma.getNumAlunos());
+  document.getElementById("media-alturas")!.textContent = turma.getMediaAlturas();
   document.getElementById("media-pesos")!.textContent = turma.getMediaPesos();
 }
 
