@@ -11,3 +11,4 @@ class CarrinhoDeCompras<TipoDeProduto> {
         return this.produtos.pop();
     }
 }
+
