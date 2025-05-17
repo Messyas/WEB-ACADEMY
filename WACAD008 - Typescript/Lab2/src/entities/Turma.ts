@@ -19,7 +19,7 @@ export class Turma {
   }
 
   public removeAluno(id: string): void {
-    this.alunos = this.alunos.filter(a => a.getId() !== id);
+    this.alunos = this.alunos.filter((a) => a.getId() !== id);
   }
 
   public getAlunos(): Aluno[] {

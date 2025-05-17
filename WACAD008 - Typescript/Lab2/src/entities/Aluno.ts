@@ -7,6 +7,10 @@ export class Aluno {
     private altura: number,
     private peso: number
   ) {
+    this.nome = nome;
+    this.idade = idade;
+    this.altura = altura;
+    this.peso = peso;
     this.validate();
   }
 
