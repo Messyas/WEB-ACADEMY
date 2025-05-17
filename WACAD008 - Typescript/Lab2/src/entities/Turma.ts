@@ -23,14 +23,15 @@ export class Turma {
   }
 
   public updateAluno(
-    id: string, 
-    nome: string, 
-    idade: number, 
-    altura: number, 
-    peso: number): void {
-      const aluno = this.alunos.find(a => a.getId() === id);
-      if (!aluno) throw new Error("Aluno nao encontrado");
-      aluno.atualizar(nome, idade, altura, peso);
+    id: string,
+    nome: string,
+    idade: number,
+    altura: number,
+    peso: number
+  ): void {
+    const aluno = this.alunos.find((a) => a.getId() === id);
+    if (!aluno) throw new Error("Aluno nao encontrado");
+    aluno.atualizar(nome, idade, altura, peso);
   }
 
   public getAlunos(): Aluno[] {

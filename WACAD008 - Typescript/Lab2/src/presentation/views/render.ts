@@ -25,7 +25,7 @@ export function renderTabela(turma: Turma): void {
       <td>${(aluno.getPeso() / 1000).toFixed(3)}</td>
       <td>
         <div class="d-flex justify-content-start gap-2">
-          <button type="button" class="btn btn-secondary">Editar</button>
+          <button type="button" class="btn btn-secondary btn-editar">Editar</button>
           <button type="button" class="btn btn-danger btn-excluir">Excluir</button>
         </div>
       </td>
