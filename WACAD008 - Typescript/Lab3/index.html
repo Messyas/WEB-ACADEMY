@@ -3,118 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de alunos</title>
+    <title>Marketplace</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body class="bg-dark">
+<body>
     <div class="container py-4">
-    <h1 class="mb-4 text-center text-white">Gerenciador de Alunos - EF</h1>
-
-    <!-- Cards de Resumo -->
-    <div class="row mb-4">
-      <div class="col-md-4">
-        <div class="card bg-light h-100">
-          <div class="card-body">
-            <h5 class="card-title">Total de Alunos</h5>
-            <p id="total-alunos" class="display-4">0</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card text-white bg-primary h-100">
-          <div class="card-body">
-            <h5 class="card-title">Média de Alturas (m)</h5>
-            <p id="media-alturas" class="display-4">0.00</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card text-white bg-primary h-100">
-          <div class="card-body">
-            <h5 class="card-title">Média de Pesos (kg)</h5>
-            <p id="media-pesos" class="display-4">00.000</p>
-          </div>
-        </div>
-      </div>
+      
     </div>
-
-    <button
-    class="btn btn-primary rounded-circle position-fixed"
-    style="width:60px; height:60px; bottom:20px; right:20px; font-size:1.5rem;"
-    data-bs-toggle="modal"
-    data-bs-target="#modalAluno"
-    title="Adicionar Aluno">+</button>
-
-    <!-- Tabela de Alunos -->
-    <div class="card">
-      <div class="card-header">
-        <h5 class="mb-0">Lista de Alunos</h5>
-      </div>
-      <div class="card-body p-0">
-        <table class="table table-bordered mb-0">
-          <thead class="table-light">
-            <tr>
-              <th>Id</th>
-              <th>Nome</th>
-              <th>Idade</th>
-              <th>Altura (m)</th>
-              <th>Peso (kg)</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="tabela-alunos">
-            <!-- registros dinamicas -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-     <!-- Modal de Cadastro de Aluno -->
-  <div
-    class="modal fade text-dark"
-    id="modalAluno"
-    tabindex="-1"
-    aria-labelledby="modalAlunoLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <form id="formAluno" class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalAlunoLabel">Novo Aluno</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Fechar"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="inputNome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="inputNome" required />
-          </div>
-          <div class="mb-3">
-            <label for="inputIdade" class="form-label">Idade</label>
-            <input type="number" class="form-control" id="inputIdade" min="0" max="120" value="7" required />
-          </div>
-          <div class="mb-3">
-            <label for="inputAltura" class="form-label">Altura (m)</label>
-            <input type="number" class="form-control" id="inputAltura" min="0.00" max="3.00" step="0.01" value="1.70" required />
-          </div>
-          <div class="mb-3">
-            <label for="inputPeso" class="form-label">Peso (kg)</label>
-            <input type="number" class="form-control" id="inputPeso" min="0" max="400" step="0.001" value="65.500" required />
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Cadastrar Aluno</button>
-        </div>
-      </form>
-    </div>
-  </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script type="module" src="./dist/app.js"></script>
