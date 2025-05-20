@@ -1,7 +1,10 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
+import validateEnv from "./utils/validateEnv";
 
 dotenv.config()
+validateEnv(); //faz a validacao das variaveis de ambiente
+
 const PORT = process.env.PORT ?? 6969;
 const app = express();
 
