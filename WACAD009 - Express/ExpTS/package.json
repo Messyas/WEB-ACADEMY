@@ -7,7 +7,9 @@
     "start": "nodemon --watch src/index.ts",
     "build": "tsc",
     "start:prod": "node --watch build/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src/",
+    "lint:fix": "npx eslint --fix src/",
+    "format": "prettier --write src/"
   },
   "keywords": [],
   "author": "Messyas",
