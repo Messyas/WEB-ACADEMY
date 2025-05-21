@@ -8,6 +8,27 @@ validateEnv(); //faz a validacao das variaveis de ambiente
 const PORT = process.env.PORT ?? 6969;
 const app = express();
 
+//chama o proximo middleware da cadeia
+app.use((req, res, next) => {
+console.log(`Requisição ${req.method} ${req.url}`);
+next();
+});
+
+app.use((req, res, next) => {
+if (user.checkAuth(req)) {
+next();
+} else {
+res.statusCode = 403;
+res.json({ msg: "Usuário não autenticado" })
+}
+});
+
+app.use((req, res) => {
+res.json({ dados_secretos: { codigo: 156234 } });
+});
+
+//================================================
+
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello world!');
 });
