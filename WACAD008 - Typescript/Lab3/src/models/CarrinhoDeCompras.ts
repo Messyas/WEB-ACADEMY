@@ -20,8 +20,9 @@ export class CarrinhoDeCompras<T extends Produto>
     console.log('produto adicionado');
   }
 
-  removerPorIndice(indice: number): boolean {
-    return true; //acho que vou fazer isso por nome, nao sei se add id nesse caso, pesquisar pra ver se faz sentido
+  remover(produtoId: string): boolean {
+    const removido = this.itens.delete(produtoId);
+    return removido;
   }
 
   calcularQuantidade(): number {
