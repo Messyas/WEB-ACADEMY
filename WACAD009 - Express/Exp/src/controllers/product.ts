@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { get, post } from "../utils/dbapi"
+import { Product } from '../types/products';
 
 const index = async (req: Request, res: Response) => {
     const products = await get("products");
@@ -12,8 +13,8 @@ const create = async (req: Request, res: Response) => {
     if (req.method === "GET") {
         res.render("product/create");
     } else if (req.method === "POST") {
-        //const newProduct: Product = req.body <-- passado pro awaid no lugar do segundo parametro
-        await post("products", req.body);
+        const newProduct: Product = req.body 
+        await post("products", newProduct);
         res.redirect("/products");
     }
 };

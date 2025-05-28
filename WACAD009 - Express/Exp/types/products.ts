@@ -1,3 +1,0 @@
-export Product {
-    name: string
-}
