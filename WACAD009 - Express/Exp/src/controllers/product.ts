@@ -19,9 +19,18 @@ const create = async (req: Request, res: Response) => {
 };
 const read = async (req: Request, res: Response) => {
     const id = req.params.id;
-    const products = await get (`products/${id}`)
+    const products = await get (`products/${id}`);
+    return products.data;
 };
-async function update (req: Request, res: Response) {};
-async function remove (req: Request, res: Response) {};
+
+const update = async (req: Request, res: Response) => {
+    const id = req.params.id;
+    
+
+      
+};
+const remove = async (req: Request, res: Response) => {
+
+};
 
 export default { index, read, create, update, remove }
