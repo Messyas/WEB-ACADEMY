@@ -11,6 +11,6 @@ export class Tv implements TvInterface {
     public fabricante: string,
     public valor: number
   ) {
-    this.id = `bicicleta-${nextId++}`;
+    this.id = `Tv-${nextId++}`;
   }
 }
