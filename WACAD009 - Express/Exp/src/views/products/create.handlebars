@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-between align-itens-center">
+
+  <h1>Criar produto</h1>
+  <a href="/products">
+    <i class="bi bi-arrow-left-square"></i>
+  </a>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+
+        
+  <form action="/products/create" method="post">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome Produto</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nome"
+          name="nome"
+          aria-describedby="nomeProduto"
+        />
+      </div>
+      <label for="preco" class="form-label">Preço do Produto</label>
+        <input
+          type="text"
+          class="form-control"
+          id="preco"
+          name="preco"
+          aria-describedby="precoProduto"
+        />
+        <label for="nome" class="form-label">Stock Produto</label>
+        <input
+          type="text"
+          class="form-control"
+          id="stock"
+          name="stock"
+          aria-describedby="stockProduto"
+        />
+      <button type="submit" class="btn btn-primary">Criar</button>
+      </div>
+  </form>
+  </div>
+</div>

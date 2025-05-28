@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between align-itens-center">
+
+<h1>Listagem de produtos</h1>
+ <a href="/products/create"></a>
+ <i class="bi bi-plus-square"></i>
+</div>
+
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Estoque</th>
+        <th scope="col" class="textend">Opçoes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr> 
+        {{#each products}}
+        <td>{{name}}</td>
+        <td>{{price}}</td>
+        <td>{{stock}}</td>
+        <td class="textend">
+          <a href="/products/{{id}}"><i class="bi bi-eye"></i></a>
+          <a href="/products/update/{{id}}"> <i class="bi bi-pencil-fill"></i></a>
+          <a href="/products/remove{{id}}"><i class="bi bi-trash"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

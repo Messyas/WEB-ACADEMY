@@ -1,0 +1,3 @@
+export Product {
+    name: string
+}

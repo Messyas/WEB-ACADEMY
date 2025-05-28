@@ -10,6 +10,11 @@ app.get("/", (req, res) => {
     res.send("hello world!")
 });
 
+app.use(express.urlencoded({ extended: false})); //middleware que vai criar uma propriedade dentro de req que vai craiar um body pro user
+
 app.listen(PORT, () => {
     console.log(`Server running on Port: ${PORT}`)
 })
+
+
+//shift + control + seta pra baixo
