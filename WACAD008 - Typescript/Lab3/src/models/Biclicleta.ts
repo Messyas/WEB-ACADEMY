@@ -9,6 +9,6 @@ export class Bicicleta implements BicicletaInterface {
     public fabricante: string,
     public valor: number
   ) {
-     this.id = `Celular-${nextId++}`;
+     this.id = `Bicicleta-${nextId++}`;
   }
 }
