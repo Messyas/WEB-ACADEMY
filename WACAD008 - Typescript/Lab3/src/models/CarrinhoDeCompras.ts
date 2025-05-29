@@ -1,8 +1,7 @@
-import { CarrinhoDeComprasInterface } from "./interfaces/CarrinhoDeComprasInterface";
-import { ItemCarrinho } from "./interfaces/ItemCarrinho";
-import { Produto } from "./interfaces/ProdutoInterface";
+import { CarrinhoDeComprasInterface } from "./interfacesBase/CarrinhoDeComprasInterface.js";
+import { ItemCarrinho } from "./interfacesBase/ItemCarrinhoInterface.js";
+import { Produto } from "./interfacesBase/ProdutoInterface.js";
 
-//classe generica
 export class CarrinhoDeCompras<T extends Produto>
   implements CarrinhoDeComprasInterface<T>
 {
@@ -17,19 +16,43 @@ export class CarrinhoDeCompras<T extends Produto>
     } else {
       this.itens.set(produto.id, { produto, quantidade });
     }
-    console.log('produto adicionado');
+    console.log(`Produto ${produto.modelo} adicionado/atualizado.`);
   }
 
   remover(produtoId: string): boolean {
     const removido = this.itens.delete(produtoId);
+    console.log(`Produto ${produtoId} removido: ${removido}`);
     return removido;
   }
 
-  calcularQuantidade(): number {
-    return this.produtos.length;
+  atualizarQuantidade(produtoId: string, novaQuantidade: number): void {
+    if (novaQuantidade <= 0) {
+      this.remover(produtoId);
+    } else if (this.itens.has(produtoId)) {
+      this.itens.get(produtoId)!.quantidade = novaQuantidade;
+      console.log(
+        `Quantidade do produto ${produtoId} atualizada para ${novaQuantidade}.`
+      );
+    }
+  }
+
+  listarItens(): ItemCarrinho<T>[] {
+    return Array.from(this.itens.values());
+  }
+
+  calcularQuantidadeTotal(): number {
+    let total = 0;
+    for (const item of this.itens.values()) {
+      total += item.quantidade;
+    }
+    return total;
   }
 
   calcularValorTotal(): number {
-    return this.produtos.reduce((acc, p) => acc + p.valor, 0);
+    let total = 0;
+    for (const item of this.itens.values()) {
+      total += item.produto.valor * item.quantidade;
+    }
+    return total;
   }
 }

@@ -1,4 +1,4 @@
-import { BicicletaInterface } from "./interfaces/Bicicleta";
+import { BicicletaInterface } from "./interfacesBase/Bicicleta.js";
 
 let nextId = 1;
 export class Bicicleta implements BicicletaInterface {
@@ -9,6 +9,6 @@ export class Bicicleta implements BicicletaInterface {
     public fabricante: string,
     public valor: number
   ) {
-     this.id = `Bicicleta-${nextId++}`;
+    this.id = `Bicicleta-${nextId++}`;
   }
 }

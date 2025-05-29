@@ -18,18 +18,25 @@
       .quantity-input {
         width: 70px;
       }
+      .product-specific {
+        /* Estilo para esconder campos por padrão */
+        display: none;
+      }
     </style>
   </head>
   <body>
     <nav class="navbar navbar-light bg-light mb-4">
       <div class="container">
         <a class="navbar-brand" href="#">Marketplace</a>
-        <button class="btn btn-outline-primary position-relative">
-          <i class="fas fa-shopping-cart"></i> Carrinho
-          <span
+        <button
+          class="btn btn-outline-primary position-relative"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#addProductModal"
+        >
+          <i class="fas fa-plus-circle"></i> Adicionar Produto<span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
           >
-            2 <span class="visually-hidden">itens no carrinho</span>
           </span>
         </button>
       </div>
@@ -53,24 +60,8 @@
               </thead>
               <tbody id="cart-items">
                 <tr>
-                  <td>
-                    <h6 class="mb-0">Nome do Produto</h6>
-                    <small class="text-muted">descrição do produto</small>
-                  </td>
-                  <td>R$ 00,00</td>
-                  <td>
-                    <input
-                      type="number"
-                      class="form-control form-control-sm quantity-input"
-                      value="1"
-                      min="1"
-                    />
-                  </td>
-                  <td>R$ 00,00</td>
-                  <td class="text-end">
-                    <button class="btn btn-sm btn-outline-danger">
-                      <i class="fas fa-trash-alt"></i> Remover
-                    </button>
+                  <td colspan="5" class="text-center">
+                    Carregando carrinho...
                   </td>
                 </tr>
               </tbody>
@@ -89,19 +80,19 @@
                   class="list-group-item d-flex justify-content-between align-items-center"
                 >
                   Subtotal
-                  <span id="cart-subtotal">R$ 00,00</span>
+                  <span id="cart-subtotal">R$ 0,00</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center"
                 >
                   Frete
-                  <span id="cart-shipping">R$ 00,00</span>
+                  <span id="cart-shipping">R$ 0,00</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center fw-bold"
                 >
                   Total
-                  <span id="cart-total">R$ 00,00</span>
+                  <span id="cart-total">R$ 0,00</span>
                 </li>
               </ul>
               <div class="d-grid gap-2 mt-4">
@@ -115,6 +106,137 @@
       </div>
     </div>
 
+    <div
+      class="modal fade"
+      id="addProductModal"
+      tabindex="-1"
+      aria-labelledby="addProductModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addProductModalLabel">
+              Adicionar Produto
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="addProductForm">
+              <div class="mb-3">
+                <label for="productType" class="form-label"
+                  >Tipo de Produto</label
+                >
+                <select class="form-select" id="productType" required>
+                  <option value="" selected disabled>Selecione...</option>
+                  <option value="celular">Celular</option>
+                  <option value="tv">TV</option>
+                  <option value="bicicleta">Bicicleta</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="productModel" class="form-label">Modelo</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productModel"
+                  required
+                  value="Modelo Teste"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="productManufacturer" class="form-label"
+                  >Fabricante</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productManufacturer"
+                  required
+                  value="Fabricante Teste"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="productValue" class="form-label">Valor (R$)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="productValue"
+                  step="0.01"
+                  min="1"
+                  required
+                  value="100"
+                />
+              </div>
+
+              <div class="mb-3 product-specific" id="celular-fields">
+                <label for="celularMemory" class="form-label">Memória</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="celularMemory"
+                  value="64GB"
+                />
+              </div>
+
+              <div class="product-specific" id="tv-fields">
+                <div class="mb-3">
+                  <label for="tvResolution" class="form-label"
+                    >Resolução (p)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="tvResolution"
+                    value="1080"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tvSize" class="form-label"
+                    >Tamanho (Polegadas)</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tvSize"
+                    value="50"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 product-specific" id="bicicleta-fields">
+                <label for="bicicletaAro" class="form-label"
+                  >Tamanho do Aro</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="bicicletaAro"
+                  value="26"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+            <button type="submit" class="btn btn-primary" form="addProductForm">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

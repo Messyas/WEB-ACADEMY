@@ -1,4 +1,4 @@
-import { TvInterface } from "./interfaces/TvInterface";
+import { TvInterface } from "./interfacesBase/TvInterface.js";
 
 let nextId = 1;
 export class Tv implements TvInterface {
