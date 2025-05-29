@@ -6,6 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const product_1 = __importDefault(require("../controllers/product"));
 const router = (0, express_1.Router)();
+router.get("/", (req, res) => {
+    res.render("hb1");
+});
 // Controlador Product
 router.get('/product', product_1.default.index);
 router.all('/product/create', product_1.default.create);

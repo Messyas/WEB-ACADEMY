@@ -1,26 +1,13 @@
 import { Router } from 'express';
 import productController from '../controllers/product';
 
-const html = `
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script defer src="/js/script.js"></script>
-    <link rel="stylesheet" href="/css/styles.css" />
-  </head>
-  <body>
-    <h1>Web Academy</h1>
-  </body>
-</html>
-`;
-
 const router = Router();
 
 router.get("/", (req, res) => {
-    res.send(html);
+    res.render("hb1", {
+      layout: false,
+      mensagem: 'Seja bem-vindo(a) ao Web Academy'
+    });
 });
 
 // Controlador Product
