@@ -9,8 +9,7 @@ function logger(type: LoggerType) {
     return async (req: Request, res: Response, next: NextFunction) => {
       await fsPromises.writeFile(
         `${process.cwd()}/${LOGS_PATH}/logs.log`,
-        `[Completo] ${new Date().toISOString()} - Metodo: ${req.method},
-         URL: ${req.originalUrl}, IP: ${req.ip}\n, Data: ${date}`, 
+        `[Completo] DATA: ${date} - URL: ${req.url}, METODO: ${req.method}, ${req.httpVersion}, User-Agent: ${req.get('User-Agent')}`,
         { flag: 'a' },
       );
       next();
@@ -19,7 +18,7 @@ function logger(type: LoggerType) {
     return async (req: Request, res: Response, next: NextFunction) => {
       await fsPromises.writeFile(
         `${process.cwd()}/${LOGS_PATH}/logs.log`,
-        `[Simples] ${new Date().toISOString()} - Método: ${req.method}, URL: ${req.originalUrl}\n`,
+        `[Simples] DATA: ${date} - URL: ${req.url}, METODO: ${req.method}\n`,
         { flag: 'a' },
       );
       next();
