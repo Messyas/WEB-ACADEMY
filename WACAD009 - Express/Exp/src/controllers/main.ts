@@ -7,7 +7,6 @@ const index = (req: Request, res: Response) => {
 
 const hb1 = (req: Request, res: Response) => {
   res.render('hb1', {
-    layout: false,
     mensagem: 'Olá, você está aprendendo Express + HBS!',
   });
 };
@@ -16,8 +15,7 @@ const hb2 = (req: Request, res: Response) => {
   res.render('hb2', {
     poweredByNodejs: true,
     name: 'Express',
-    type: 'Framework',
-    layout: false,
+    type: 'Framework'
   });
 };
 
@@ -29,8 +27,7 @@ const hb3 = (req: Request, res: Response) => {
     { nome: 'Elaine Harada', sala: 1231 },
   ];
   res.render('hb3', {
-    layout: false,
-    profs,
+    profs
   });
 };
 
@@ -46,8 +43,7 @@ const hb4 = (req: Request, res: Response) => {
     { name: 'Sequelize', type: 'ORM tool', poweredByNodejs: true },
   ];
   res.render('hb4', {
-    layout: false,
-    technologies,
+    technologies
   });
 };
 

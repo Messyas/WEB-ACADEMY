@@ -6,6 +6,7 @@
     "start": "nodemon --watch src --ext js,ts,json --exec ts-node src/index.ts",
     "build": "tsc",
     "start:prod": "node build/index.js",
+    "sass": "npx sass public/scss/main.scss public/css/main.css --watch",
     "start:db": "json-server",
     "lint": "eslint src/",
     "lint:fix": "npx eslint --fix src/",
@@ -25,6 +26,7 @@
     "express-handlebars": "^8.0.3",
     "json-server": "^1.0.0-beta.3",
     "nodemon": "^3.1.10",
+    "sass": "^1.89.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },

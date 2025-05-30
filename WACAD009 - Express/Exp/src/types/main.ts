@@ -8,3 +8,5 @@ export type Tech = {
     type: string;
     poweredByNodejs: boolean;
 };
+
+export type LoggerType = 'completo' | 'simples';
