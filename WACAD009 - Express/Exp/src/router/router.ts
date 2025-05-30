@@ -1,16 +1,20 @@
 import { Router } from 'express';
 import productController from '../controllers/product';
+import mainController from '../controllers/main'
 
 const router = Router();
 
-router.get("/", (req, res) => {
-    res.render("hb1", {
-      layout: false,
-      mensagem: 'Seja bem-vindo(a) ao Web Academy'
-    });
-});
+// Main Controller
+router.get('/', mainController.index);
+//router.get('/lorem', mainController.lorem);
+//router.get('/bemvindo/:nome', mainController.bemvindo);
+router.get('/hb1', mainController.hb1);
+router.get('/hb2', mainController.hb2);
+router.get('/hb3', mainController.hb3);
+router.get('/hb4', mainController.hb4);
 
-// Controlador Product
+// Controller de Product
+
 router.get('/product', productController.index);
 router.all('/product/create', productController.create);
 router.all('/product/update/:id', productController.update);

@@ -1,0 +1,21 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <script defer src='/js/script.js'></script>
+    <link rel='stylesheet' href='/css/style.css' />
+    <title>Pag dos profs</title>
+  </head>
+  <body>
+    <div class='container'>
+      <p>Alguns professores do Icomp/UFAM</p>
+      <ul>
+        {{#each profs}}
+          <li>{{nome}} - sala {{sala}}</li>
+        {{/each}}
+      </ul>
+      <p>Inprime profs com helper</p>
+      {{{listProfs profs}}}
+    </div>
+  </body>
+</html>

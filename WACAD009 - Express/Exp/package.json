@@ -6,7 +6,10 @@
     "start": "nodemon --watch src --ext js,ts,json --exec ts-node src/index.ts",
     "build": "tsc",
     "start:prod": "node build/index.js",
-    "start:db": "json-server"
+    "start:db": "json-server",
+    "lint": "eslint src/",
+    "lint:fix": "npx eslint --fix src/",
+    "format": "prettier --write src/"
   },
   "keywords": [],
   "author": "",
@@ -26,7 +29,13 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
+    "@eslint/js": "^9.27.0",
     "@types/morgan": "^1.9.9",
-    "morgan": "^1.10.0"
+    "eslint": "^9.27.0",
+    "eslist": "^1.0.0-beta.1",
+    "globals": "^16.2.0",
+    "morgan": "^1.10.0",
+    "prettier": "^3.5.3",
+    "typescript-eslint": "^8.33.0"
   }
 }
