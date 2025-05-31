@@ -1,32 +1,37 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
-import morgan from 'morgan';
 import validateEnv from './utils/validateEnv';
-import { engine } from 'express-handlebars'
+import logger from './middlewares/logger';
 import router from './router/router';
-//import logger from './middlewares/logger';
+import { engine } from 'express-handlebars';
 
 dotenv.config();
-validateEnv(); //faz a validacao das variaveis de ambiente
+validateEnv();
 
-const PORT = process.env.PORT ?? 6969;
 const app = express();
+const PORT = process.env.PORT ?? 5577;
 
-app.engine("handlebars", engine())
-app.set('view engine', 'handlebars')
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+app.engine('handlebars', engine({ helpers: require(`${__dirname}/views/helpers/helpers.ts`)}));
+app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views`);
 
-app.use(morgan('short'));
-//app.use(logger('complete'))
+app.use(logger("completo"));
 
-//chama o proximo middleware da cadeia
-app.use((req, res, next) => {
-console.log(`Requisição ${req.method} ${req.url}`);
-next();
+app.use('/css', express.static(`${process.cwd()}/public/css`));
+app.use('/js', express.static(`${process.cwd()}/public/js`));
+app.use('/img', express.static(`${process.cwd()}/public/img`));
+
+app.get("/", (req, res) => {
+ res.send("Hello world!");
 });
 
-app.use(router)
+app.use(express.urlencoded({ extended: false})); //middleware que vai criar uma propriedade dentro de req que vai criar o body
+
+app.use(router); //midware pra rotas do router
 
 app.listen(PORT, () => {
-  console.log(`Port running on port: ${PORT}`);
+  console.log(`Server rodando na Porta: ${PORT}`);
 });
+
+//shift + control + seta pra baixo

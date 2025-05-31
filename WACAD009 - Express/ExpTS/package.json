@@ -1,38 +1,44 @@
 {
-  "name": "aula1",
+  "name": "express",
   "version": "1.0.0",
-  "description": "",
-  "main": "build/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch src/index.ts",
+    "start": "nodemon --watch src --ext js,ts,json --exec ts-node src/index.ts",
     "build": "tsc",
-    "start:prod": "node --watch build/index.js",
+    "start:prod": "node build/index.js",
+    "sass": "npx sass public/scss/main.scss public/css/main.css --watch",
+    "start:db": "json-server --watch src/db/db.json --port 4455",
     "lint": "eslint src/",
     "lint:fix": "npx eslint --fix src/",
     "format": "prettier --write src/"
   },
   "keywords": [],
-  "author": "Messyas",
+  "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.23",
+    "axios": "^1.9.0",
     "dotenv": "^16.5.0",
     "envalid": "^8.0.0",
     "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "json-server": "^1.0.0-beta.3",
     "lorem-ipsum": "^2.0.8",
-    "morgan": "^1.10.0"
+    "nodemon": "^3.1.10",
+    "sass": "^1.89.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
-    "@types/express": "^5.0.2",
     "@types/morgan": "^1.9.9",
-    "@types/node": "^22.15.21",
     "eslint": "^9.27.0",
-    "globals": "^16.1.0",
-    "nodemon": "^3.1.10",
+    "eslist": "^1.0.0-beta.1",
+    "globals": "^16.2.0",
+    "morgan": "^1.10.0",
     "prettier": "^3.5.3",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.1"
+    "typescript-eslint": "^8.33.0"
   }
 }

@@ -1,3 +1,0 @@
-PORT = 8989
-NODE_ENV = development
-LOGDIR = logs

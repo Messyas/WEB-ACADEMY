@@ -1,0 +1,66 @@
+<div class='d-flex justify-content-between align-items-center mb-3'>
+  <h1>Criar Produto</h1>
+  <a href='/products' class='btn btn-outline-secondary'>
+    <i class='bi bi-arrow-left-square'></i>
+    Voltar para Lista
+  </a>
+</div>
+
+<div class='container mt-3'>
+  <div class='row justify-content-center'>
+    <div class='col-md-8 col-lg-6'>
+      {{#if error}}
+        <div class='alert alert-danger' role='alert'>
+          {{error}}
+        </div>
+      {{/if}}
+
+      <form action='/products/create' method='POST'>
+        <div class='mb-3'>
+          <label for='nome' class='form-label'>Nome do Produto</label>
+          <input
+            type='text'
+            class='form-control'
+            id='nome'
+            name='nome'
+            value='{{formData.nome}}'
+            aria-describedby='nomeProduto'
+            required
+          />
+        </div>
+
+        <div class='mb-3'>
+          <label for='preco' class='form-label'>Preço do Produto</label>
+          <input
+            type='number'
+            step='0.01'
+            class='form-control'
+            id='preco'
+            name='preco'
+            value='{{formData.preco}}'
+            aria-describedby='precoProduto'
+            required
+          />
+        </div>
+
+        <div class='mb-3'>
+          <label for='stock' class='form-label'>Estoque</label>
+          <input
+            type='number'
+            class='form-control'
+            id='stock'
+            name='stock'
+            value='{{formData.stock}}'
+            aria-describedby='stockProduto'
+            required
+          />
+        </div>
+
+        <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
+          <a href='/products' class='btn btn-secondary'>Cancelar</a>
+          <button type='submit' class='btn btn-primary'>Criar Produto</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
