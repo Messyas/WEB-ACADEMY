@@ -10,4 +10,3 @@ router.put("/:id", productController.update);
 router.delete("/:id", productController.remove);
 
 export default router;
-
