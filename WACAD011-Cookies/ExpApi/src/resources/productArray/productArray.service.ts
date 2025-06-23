@@ -1,4 +1,4 @@
-import { UpdateProductDTO, CreateProductDTO, Product } from "./product.types";
+import { UpdateProductDTO, CreateProductDTO, Product } from "./productArray.types";
 
 export let products: Product[] = [];
 

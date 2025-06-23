@@ -6,8 +6,9 @@ import {
   getProduct,
   updateProduct,
   deleteProduct,
-} from "./product.service";
-import { CreateProductDTO, UpdateProductDTO } from "./product.types";
+} from "./productArray.service";
+
+import { CreateProductDTO, UpdateProductDTO } from "./productArray.types";
 
 const index = (req: Request, res: Response) => {
   const products = getProducts();
