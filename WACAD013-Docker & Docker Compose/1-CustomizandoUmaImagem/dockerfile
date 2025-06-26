@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+ARG PORTA_ARG=7000
+ENV PORTA_CONTAINER=${PORTA_ARG}
+RUN apt-get update && apt-get install -y nginx
+RUN sed -i "s/listen 80/listen ${PORTA_CONTAINER}/" /etc/nginx/sites-available/default
+EXPOSE ${PORTA_CONTAINER}
+CMD ["nginx", "-g", "daemon off;"]
+# BUILD:
+# sudo docker build -t servidor-nginx .
+# CONTAINER:
+# sudo docker run -d -p 8080:7000 --name webserver servidor-nginx
