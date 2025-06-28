@@ -1,0 +1,55 @@
+version: "3.8"
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    networks:
+      - rede_webacademy
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - rede_webacademy
+
+  bdcontainer:
+    container_name: bdcontainer
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass2023
+    volumes:
+      - vol_mysql:/var/lib/mysql
+    networks:
+      - rede_webacademy
+
+  bdguicontainer:
+    container_name: bdguicontainer
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=bdcontainer
+    depends_on:
+      - bdcontainer
+    networks:
+      - rede_webacademy
+
+networks:
+  rede_webacademy:
+    driver: bridge
+
+volumes:
+  vol_mysql:
+    driver: local
