@@ -9,14 +9,31 @@ generator client {
 }
 
 model Product {
-  id   String @id @default(uuid()) @db.Char(36) //ocupa sempre o mesmo numero de bytes
-  name String @unique @db.VarChar(100) //varia
-  price Decimal @db.Decimal(10, 2) //10 digitos no total, 2 depois da virgula
-  stockQuantity Int @db.Int()
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String   @id @default(uuid()) @db.Char(36) //ocupa sempre o mesmo numero de bytes
+  name          String   @unique @db.VarChar(100) //varia
+  price         Decimal  @db.Decimal(10, 2) //10 digitos no total, 2 depois da virgula
+  stockQuantity Int      @db.Int()
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
   @@index([name])
+}
+
+model UserType {
+  id    String @id @default(uuid()) @db.Char(36)
+  label String @db.VarChar(10)
+  User  User[]
+}
+
+model User {
+  id         String   @id @default(uuid()) @db.Char(36)
+  name       String   @db.VarChar(100)
+  email      String   @unique @db.VarChar(100)
+  password   String   @db.Char(60)
+  userTypeId String   @db.Char(36)
+  userType   UserType @relation(fields: [userTypeId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 datasource db {

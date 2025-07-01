@@ -7,6 +7,7 @@ export function validateEnv() {
     DEFAULT_LANGUAGE: str({ choices: Object.values(Languages) }),
     NODE_ENV: str({choices: ["development", "production"]}),
     DATABASE_URL: str(),
+    SESSION_SECRET: str(),
   });
 }
 
