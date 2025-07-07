@@ -2,14 +2,14 @@ import { Request, Response } from "express";
 import { changePasswordUser, createUser } from "./user.service";
 import { changePasswordDto, CreateUserDto } from "./user.types";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
-import { getUserByEmail } from "./user.service";
+import { findUserByEmail } from "./user.service";
 
 const index = async (req: Request, res: Response) => {};
 
 const create = async (req: Request, res: Response) => {
   const data = req.body as CreateUserDto;
   try {
-    if (await getUserByEmail(data.email)) {
+    if (await findUserByEmail(data.email)) {
       return res
         .status(StatusCodes.BAD_REQUEST)
         .send(ReasonPhrases.BAD_REQUEST);
