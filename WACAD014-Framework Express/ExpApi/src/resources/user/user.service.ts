@@ -1,15 +1,14 @@
-import { Prisma, User } from "@prisma/client";
+import { Prisma, User, UserType } from "@prisma/client";
 import { CreateUserDto, UpdateUserDto } from "./user.types";
 import { compare, genSalt, hash } from "bcryptjs";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const getAllUsers = async (): Promise<User[] | null> => {
+export const getAllUsers = async (type?: UserType): Promise<User[]> => {
+  const whereClause = type ? { userTypeId: type.id } : {};
   return await prisma.user.findMany({
-    orderBy: {
-      name: Prisma.SortOrder.asc,
-    },
+    where: whereClause,
   });
 };
 
@@ -19,22 +18,24 @@ export const createUser = async (data: CreateUserDto): Promise<User> => {
   return await prisma.user.create({
     data: {
       ...data,
-      password, //substitui o password de data
+      password, //substitui o password de usuario
     },
   });
 };
 
-export const updateUser = async (id: string, data: UpdateUserDto): Promise<User> => {
-  return await prisma.user.update({
+export const updateUser = async (
+  id: string,
+  user: UpdateUserDto
+): Promise<User> => {
+  const userUpdated = await prisma.user.update({
     where: { id },
-    data: {
-      ...data,
-    },
+    data: user,
   });
+  return userUpdated;
 };
 
 export const findUserByEmail = async (email: string): Promise<User | null> => {
-  return await prisma.user.findFirst({
+  return await prisma.user.findUnique({
     where: {
       email: email,
     },
@@ -42,7 +43,7 @@ export const findUserByEmail = async (email: string): Promise<User | null> => {
 };
 
 export const findUserById = async (id: string): Promise<User | null> => {
-  return await prisma.user.findFirst({
+  return await prisma.user.findUnique({
     where: {
       id: id,
     },
@@ -63,7 +64,7 @@ export const changePasswordUser = async (
       //update no banco
       await prisma.user.update({
         where: { id },
-        data: { ...user, password },
+        data: { password: password },
       });
       return true;
     }
@@ -73,6 +74,6 @@ export const changePasswordUser = async (
 
 export const deleteUser = async (id: string): Promise<User> => {
   return await prisma.user.delete({
-    where: { id }
+    where: { id },
   });
-}
+};
