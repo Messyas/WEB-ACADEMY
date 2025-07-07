@@ -16,7 +16,7 @@ export const createUser = async (data: CreateUserDto): Promise<User> => {
   const salt = await genSalt(parseInt(process.env.ROUNDS_BCRYPT!));
   const password = await hash(data.password, salt);
   return await prisma.user.create({
-    data: {
+    data: { //uma auternativa seria tirar a senha daqui ates de retornar
       ...data,
       password, //substitui o password de usuario
     },

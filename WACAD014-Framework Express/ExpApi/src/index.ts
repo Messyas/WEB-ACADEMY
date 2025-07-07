@@ -26,6 +26,13 @@ app.use(
   })
 );
 
+declare module "express-session" {
+interface SessionData {
+uid: string;
+tipoUsuario: string
+}
+}
+
 app.use(router);
 
 app.listen(PORT, () => {

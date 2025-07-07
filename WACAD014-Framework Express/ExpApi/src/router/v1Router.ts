@@ -7,10 +7,10 @@ import authRouter from "../resources/auth/auth.router";
 
 const router = Router();
 
-router.use("/", authRouter);
 router.use("/products", productRouter);
 router.use("/productsArray", productArrayRouter);
 router.use("/languages", languageRouter);
 router.use("/users", userRouter);
+router.use("/auth", authRouter);
 
 export default router;
