@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ListagemCarrinhoProps } from "./ListagemCarrinhoProps";
+import ListagemCarrinhoProps from "./ListagemCarrinhoProps";
 
 export default function ListagemCarrinho({
   produtos,

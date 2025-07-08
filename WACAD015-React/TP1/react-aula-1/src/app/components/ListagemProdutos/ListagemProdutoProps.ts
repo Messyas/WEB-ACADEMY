@@ -1,8 +1,8 @@
 import { Produto } from "../utils/ProdutoProps";
 
-interface ListagemProdutoProps {
-    produto: Produto;
-    onAdd: (produto: Produto) => void;
+interface ListagemProdutosProps {
+  produto: Produto;
+  onAdd: (produto: Produto) => void;
 }
 
-export default ListagemProdutoProps;
+export default ListagemProdutosProps;

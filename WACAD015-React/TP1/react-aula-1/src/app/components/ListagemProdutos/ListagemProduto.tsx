@@ -9,7 +9,10 @@ interface ListagemProdutosProps {
   onAddCarrinho: (produto: Produto) => void;
 }
 
-export default function ListagemProdutos({ produtos, onAddCarrinho }: ListagemProdutosProps) {
+export default function ListagemProdutos({
+  produtos,
+  onAddCarrinho,
+}: ListagemProdutosProps) {
   return (
     <>
       <h5 className="mb-3">Produtos disponíveis:</h5>
