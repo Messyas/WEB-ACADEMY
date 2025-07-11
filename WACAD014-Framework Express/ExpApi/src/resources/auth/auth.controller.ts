@@ -25,7 +25,7 @@ const login = async (req: Request, res: Response) => {
   try {
     const user = await checkAuth({ email, password });
     if (!user) {
-      res.status(401).json({msg: "Email e/ou senha incorretos"});
+      res.status(401).json({ msg: "Email e/ou senha incorretos" });
       return;
     }
     req.session.uid = user.id;
@@ -37,12 +37,13 @@ const login = async (req: Request, res: Response) => {
 };
 
 const logout = async (req: Request, res: Response) => {
-    req.session.destroy((err) => {
-        if (err) {
-            return res.status(500).json({ msg: "Erro ao encerrar sessão" });
-        }
-        res.status(200).json({ msg: "Sessão encerrada com sucesso" });
-    });
+  req.session.destroy((err) => {
+    if (err) {
+      res.status(500).json({ msg: "Erro ao encerrar sessão" });
+      return;
+    }
+    res.status(200).json({ msg: "Sessão encerrada com sucesso" });
+  });
 };
 
 export default {

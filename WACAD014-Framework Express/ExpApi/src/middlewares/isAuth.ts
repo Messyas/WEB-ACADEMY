@@ -1,11 +1,10 @@
 import { Request, Response, NextFunction } from "express";
+import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
-const isAuth = (req: Request, res: Response, next: NextFunction) => {
-  if (req.session && req.session.uid) {
-    next(); // usuário autenticado
-  } else {
-    res.status(401).json({ msg: "Usuário não autenticado" });
-  }
+const isAuth = async (req: Request, res: Response, next: NextFunction) => {
+  const uid = req.session.uid;
+  if (uid) next();
+  else res.status(StatusCodes.FORBIDDEN).json(ReasonPhrases.FORBIDDEN);
 };
 
 export default isAuth;
