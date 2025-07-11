@@ -6,10 +6,12 @@ import { v4 as uuidv4 } from "uuid";
 import router from "./router/index";
 import { validateEnv } from "./utils/validateEnv";
 import { setCookieLanguage } from "./middlewares/setCookieLanguage";
+import { ProductCart } from "./resources/buy/buy.types";
 declare module "express-session" {
   interface SessionData {
     uid: string;
     userType: string;
+    cart: ProductCart[];
   }
 }
 
