@@ -3,6 +3,12 @@ import { ReasonPhrases, StatusCodes } from "http-status-codes";
 import { placeOrder } from "./buy.service";
 
 const addProductToCart = (req: Request, res: Response) => {
+  /*
+  #swagger.summary = 'Adiciona um produto no carrinho.'
+  #swagger.parameters['id'] = { description: "ID do produto" }
+  #swagger.parameters['quantidade'] = { description: "Quantidade do produto" }
+  #swagger.responses[200] = { }
+ */
   const id = req.params.id;
   const quantity = Number(req.params.quantity);
 
@@ -14,6 +20,10 @@ const addProductToCart = (req: Request, res: Response) => {
 };
 
 const checkout = async (req: Request, res: Response) => {
+  /*
+   #swagger.summary = 'Finaliza compra.'
+   #swagger.responses[200] = { }
+  */
   if (!req.session.cart || req.session.cart.length === 0) {
     res.status(StatusCodes.BAD_REQUEST).json({
       message: "Carrinho vazio",

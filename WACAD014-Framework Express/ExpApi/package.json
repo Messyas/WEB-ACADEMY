@@ -6,7 +6,8 @@
     "start": "nodemon --watch src --ext js,ts,json --exec tsx src/index.ts",
     "build": "tsc",
     "start:prod": "node build/index.js",
-    "services:up": "source tools/services.sh"
+    "services:up": "source tools/services.sh",
+    "swagger": "ts-node src/swagger.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

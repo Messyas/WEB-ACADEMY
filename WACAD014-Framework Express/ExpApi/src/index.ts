@@ -7,6 +7,9 @@ import router from "./router/index";
 import { validateEnv } from "./utils/validateEnv";
 import { setCookieLanguage } from "./middlewares/setCookieLanguage";
 import { ProductCart } from "./resources/buy/buy.types";
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./swagger-output.json";
+
 declare module "express-session" {
   interface SessionData {
     uid: string;
@@ -33,7 +36,7 @@ app.use(
     cookie: { maxAge: 10 * 24 * 60 * 60 * 1000 },
   })
 );
-
+app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(router);
 
 app.listen(PORT, () => {

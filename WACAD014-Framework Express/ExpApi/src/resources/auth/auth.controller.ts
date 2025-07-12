@@ -6,6 +6,16 @@ import { UserTypes } from "../userType/userType.constants";
 import { checkAuth } from "./auth.service";
 
 const signup = async (req: Request, res: Response) => {
+  /*
+ #swagger.summary = 'Adiciona um novo usuário na base.'
+ #swagger.parameters['body'] = {
+ in: 'body',
+ schema: { $ref: '#/definitions/CreateUsuarioDto' }
+ }
+ #swagger.responses[200] = {
+ schema: { $ref: '#/definitions/Usuario' }
+ }
+ */
   const data = req.body as SignUpDto;
   try {
     if (await findUserByEmail(data.email)) {
@@ -21,6 +31,14 @@ const signup = async (req: Request, res: Response) => {
 };
 
 const login = async (req: Request, res: Response) => {
+  /*
+ #swagger.summary = 'Loga um usuário.'
+ #swagger.parameters['body'] = {
+ in: 'body',
+ schema: { $ref: '#/definitions/LoginDto' }
+ }
+ #swagger.responses[200] = {}
+ */
   const { email, password } = req.body;
   try {
     const user = await checkAuth({ email, password });
@@ -37,6 +55,10 @@ const login = async (req: Request, res: Response) => {
 };
 
 const logout = async (req: Request, res: Response) => {
+  /*
+ #swagger.summary = 'Desloga um usuário.'
+ #swagger.responses[200] = {}
+ */
   req.session.destroy((err) => {
     if (err) {
       res.status(500).json({ msg: "Erro ao encerrar sessão" });
