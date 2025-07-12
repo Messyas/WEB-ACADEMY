@@ -8,7 +8,11 @@ function validate(schema: Schema) {
       abortEarly: false,
     });
 
-    if (error) return res.status(StatusCodes.UNPROCESSABLE_ENTITY).json(error);
+    if (error) {
+       res.status(StatusCodes.UNPROCESSABLE_ENTITY).json(error);
+       return;
+    }
+     
     next();
   };
 }
