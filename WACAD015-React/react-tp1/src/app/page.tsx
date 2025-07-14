@@ -1,56 +1,26 @@
 "use client";
-
 import React, { useState } from "react";
-import CartSummary from "./components/ResumoCarrinho/ResumoCarrinho";
-import { Produto } from "./components/utils/ProdutoProps";
-import ListagemProdutos from "./components/ListagemProdutos/ListagemProduto";
+import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
+import ResumoCarrinho from "./components/ResumoCarrinho/ResumoCarrinho";
+import { Produto } from "./types/produto";
 
-const produtosDisponiveis: Produto[] = [
-  {
-    id: 101,
-    nome: "Notebook Gamer Avançado",
-    precoUnitario: 7500,
-    quantidade: 12,
-    imagemUrl: "/placeholder.png",
-  },
-  {
-    id: 102,
-    nome: "Cadeira Ergonômica",
-    precoUnitario: 1200,
-    quantidade: 5,
-    imagemUrl: "/placeholder.png",
-  },
-  {
-    id: 103,
-    nome: "Fone de Ouvido",
-    precoUnitario: 350,
-    quantidade: 20,
-    imagemUrl: "/placeholder.png",
-  },
-  {
-    id: 104,
-    nome: "SSD NVMe 1TB",
-    precoUnitario: 680,
-    quantidade: 8,
-    imagemUrl: "/placeholder.png",
-  },
-];
+export default function Produtos() {
+  const [quantidadeItensTotal, setQuantidadeItensTotal] = useState(0);
+  const [precoTotal, setPrecoTotal] = useState(0);
 
-export default function ProdutosPage() {
-  const [, setCarrinho] = useState<Produto[]>([]);
-
-  const handleAdicionarAoCarrinho = (produtoAdicionado: Produto) => {
-    setCarrinho((carrinhoAtual) => [...carrinhoAtual, produtoAdicionado]);
+  const adicionarAoCarrinho = (produto: Produto) => {
+    setQuantidadeItensTotal(quantidadeItensTotal + 1);
+    setPrecoTotal(precoTotal + Number(produto.preco));
   };
 
   return (
     <main>
       <div className="container p-5">
-        <CartSummary />
-        <ListagemProdutos
-          produtos={produtosDisponiveis}
-          onAddCarrinho={handleAdicionarAoCarrinho}
+        <ResumoCarrinho
+          quantidadeItensTotal={quantidadeItensTotal}
+          precoTotal={precoTotal}
         />
+        <ListagemProdutos adicionarAoCarrinho={adicionarAoCarrinho} />
       </div>
     </main>
   );
