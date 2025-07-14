@@ -1,18 +1,22 @@
-"use client";
-
 import React from "react";
-import ListagemCarrinhoProps from "./ListagemCarrinhoProps";
+import ItemCarrinho from "../ItemCarrinho/ItemCarrinho";
+import { produtoCarrinho } from "../../types/carrinho";
 
-export default function ListagemCarrinho({
-  produtos,
-  onRemoveProduto,
-}: ListagemCarrinhoProps) {
+interface ListagemCarrinhoProps {
+  itensCarrinho: produtoCarrinho[];
+  removerItemDoCarrinho: (id: string) => void;
+}
+
+const ListagemCarrinho = ({
+  itensCarrinho,
+  removerItemDoCarrinho,
+}: ListagemCarrinhoProps) => {
   return (
     <div className="card mb-4">
       <div className="row card-body">
         <h5 className="card-title mb-4 fw-light">Produtos selecionados</h5>
         <div className="table-responsive">
-          <table className="table">
+          <table className="table ">
             <thead>
               <tr>
                 <th>Produto</th>
@@ -23,21 +27,12 @@ export default function ListagemCarrinho({
               </tr>
             </thead>
             <tbody>
-              {produtos.map((produto) => (
-                <tr key={produto.id}>
-                  <td>{produto.nome}</td>
-                  <td>R$ {produto.precoUnitario.toFixed(2)}</td>
-                  <td>{produto.quantidade}</td>
-                  <td>R$ {(produto.precoUnitario * produto.quantidade).toFixed(2)}</td>
-                  <td>
-                    <button
-                      onClick={() => onRemoveProduto(produto.id)}
-                      className="btn btn-danger btn-sm"
-                    >
-                      Remover
-                    </button>
-                  </td>
-                </tr>
+              {itensCarrinho.map((itemCarrinho) => (
+                <ItemCarrinho
+                  key={itemCarrinho.id}
+                  itemCarrinho={itemCarrinho}
+                  removerItemDoCarrinho={removerItemDoCarrinho}
+                />
               ))}
             </tbody>
           </table>
@@ -45,4 +40,6 @@ export default function ListagemCarrinho({
       </div>
     </div>
   );
-}
+};
+
+export default ListagemCarrinho;

@@ -1,45 +1,39 @@
 "use client";
-
 import React, { useState } from "react";
-import CartSummary from "../components/ResumoCarrinho/ResumoCarrinho";
+import ResumoCarrinho from "../components/ResumoCarrinho/ResumoCarrinho";
 import ListagemCarrinho from "../components/ListagemCarrinho/ListagemCarrinho";
-import { Produto } from "../components/utils/ProdutoProps";
-
-const produtosIniciais: Produto[] = [
-  { id: 1, nome: "Notebook Dell XPS", precoUnitario: 9500, quantidade: 1 },
-  {
-    id: 2,
-    nome: "Teclado Mecânico Keychron",
-    precoUnitario: 850,
-    quantidade: 1,
-  },
-  {
-    id: 3,
-    nome: "Mouse Logitech MX Master 3",
-    precoUnitario: 550,
-    quantidade: 2,
-  },
-];
+import { mockItensCarrinho } from "../mocks/itensCarrinho";
 
 export default function Carrinho() {
-  const [produtos, setProdutos] = useState<Produto[]>(produtosIniciais);
+  const [itensCarrinho, setItensCarrinho] = useState(mockItensCarrinho);
+  const [quantidadeItensTotal, setQuantidadeItensTotal] = useState(
+    itensCarrinho.reduce((acc, item) => acc + item.quantidade, 0)
+  );
+  const [precoTotal, setPrecoTotal] = useState(
+    itensCarrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0)
+  );
 
-  // Lógica para remover um produto do estado
-  const handleRemoverProduto = (produtoId: number) => {
-    setProdutos((produtosAtuais) =>
-      produtosAtuais.filter((p) => p.id !== produtoId)
-    );
+  const removerItemDoCarrinho = (id: string) => {
+    const itemCarrinho = itensCarrinho.find((item) => item.id === id);
+
+    if (itemCarrinho) {
+      setQuantidadeItensTotal(quantidadeItensTotal - itemCarrinho.quantidade);
+      setItensCarrinho(itensCarrinho.filter((item) => item.id !== id));
+      setPrecoTotal(precoTotal - itemCarrinho.preco * itemCarrinho.quantidade);
+    }
   };
-  // depois add Lógica para calcular o total do carrinho
 
   return (
     <main>
       <div className="container p-5">
         <ListagemCarrinho
-          produtos={produtos}
-          onRemoveProduto={handleRemoverProduto}
+          itensCarrinho={itensCarrinho}
+          removerItemDoCarrinho={removerItemDoCarrinho}
         />
-        <CartSummary /> {/* O CartSummary receberia o total calculado */}
+        <ResumoCarrinho
+          quantidadeItensTotal={quantidadeItensTotal}
+          precoTotal={precoTotal}
+        />
       </div>
     </main>
   );
