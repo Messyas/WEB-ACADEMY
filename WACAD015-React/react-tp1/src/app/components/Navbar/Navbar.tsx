@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-md bg-light border-bottom border-body sticky-top">
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
-          Terios-House.
+          Estetica Marci
         </Link>
         <button
           className="navbar-toggler"

@@ -20,3 +20,12 @@ export async function addProdutoFavorito(produto: Produto) {
     .post<Produto>("/favoritos", produto)
     .then((response) => response.data);
 }
+
+export async function getProdutosFavoritos(): Promise<Produto[]> {
+  return apiFavoritos.get("/favoritos").then((response) => response.data);
+}
+
+export async function removeProdutoFavorito(produtoId: string): Promise<void> {
+  await new Promise((resolve) => setTimeout(resolve, 1000)); // simula delay
+  await apiFavoritos.delete(`/favoritos/${produtoId}`);
+}
