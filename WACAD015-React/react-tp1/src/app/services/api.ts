@@ -5,5 +5,5 @@ export const produtosApi = axios.create({
 });
 
 export const apiFavoritos = axios.create({
-  baseURL: "",
+  baseURL: "https://favoritos-json-server-main-zeta.vercel.app/",
 });

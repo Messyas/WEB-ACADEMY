@@ -4,6 +4,7 @@ import { Produto } from "../../types/produto";
 import { useAddFavorito } from "@/app/hooks/useProdutoFavorito";
 import { toast } from "react-toastify";
 
+
 interface CardProdutoProps {
   produto: Produto;
   adicionarAoCarrinho: (produto: Produto) => void;

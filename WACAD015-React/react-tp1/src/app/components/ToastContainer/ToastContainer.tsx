@@ -1,19 +1,17 @@
-import { ToastContainer, Bounce } from "react-toastify";
+import { Bounce, ToastContainer } from "react-toastify";
+import "../../../../public/styles/custom-toast.css"
 
 export default function ToastMensagem() {
   return (
     <ToastContainer
-      position="top-right"
-      autoClose={3000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="colored"
-      transition={Bounce}
-    />
+    hideProgressBar={false}
+    progressClassName="rgb-progress-bar"
+    closeOnClick
+    pauseOnFocusLoss
+    pauseOnHover
+    draggable
+    transition={Bounce}
+    autoClose={3000}
+  />
   );
 }
