@@ -3,6 +3,9 @@
 import { useState } from "react";
 import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
 import { mockProdutos } from "./mocks/produtos";
+import { createContext } from "vm";
+
+
 
 export default function App() {
   const produtos = mockProdutos;
