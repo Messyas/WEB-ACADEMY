@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const api = axios.create({
+export const produtosApi = axios.create({
   baseURL: "https://ranekapi.origamid.dev/json/api",
 });
 
