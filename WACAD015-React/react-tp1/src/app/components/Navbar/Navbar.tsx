@@ -16,7 +16,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-md bg-light border-bottom border-body sticky-top">
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
-          Estetica Marci
+          Web-Loja
         </Link>
         <button
           className="navbar-toggler"

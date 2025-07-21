@@ -26,6 +26,6 @@ export async function getProdutosFavoritos(): Promise<Produto[]> {
 }
 
 export async function removeProdutoFavorito(produtoId: string): Promise<void> {
-  await new Promise((resolve) => setTimeout(resolve, 1000)); // simula delay
+  await new Promise((resolve) => setTimeout(resolve, 500)); // simula delay
   await apiFavoritos.delete(`/favoritos/${produtoId}`);
 }

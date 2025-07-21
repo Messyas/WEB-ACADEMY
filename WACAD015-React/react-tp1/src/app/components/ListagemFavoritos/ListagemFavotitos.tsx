@@ -29,7 +29,13 @@ const ListagemFavoritos = ({
               {itensFavoritos.map((item) => (
                 <ItemFavorito
                   key={item.id}
-                  itemFavorito={item}
+                  itemFavorito={{
+                    ...item,
+                    preco:
+                      typeof item.preco === "string"
+                        ? Number(item.preco)
+                        : item.preco,
+                  }}
                   removerItemDosFavoritos={onRemoverFavorito}
                 />
               ))}
