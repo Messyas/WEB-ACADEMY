@@ -1,5 +1,8 @@
+// app/components/CardProduto/CardProduto.tsx
 "use client";
 
+// 1. Importe useState e useEffect
+import { useState, useEffect } from "react";
 import { useFavoritos } from "@/app/state/FavoritosProvider";
 import { calculaValorComPorcentagemDeDesconto } from "@/app/helpers";
 import Image from "next/image";
@@ -16,16 +19,24 @@ export default function CardProduto({
   mostrarBotao = true,
 }: CardProdutoProps) {
   const { favoritos, setFavoritos } = useFavoritos();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const adicionarAosFavoritos = (produto: Produto) => {
     setFavoritos((favoritosAtuais) => [...favoritosAtuais, produto]);
   };
+
   const removerDosFavoritos = (id: string) => {
     setFavoritos((favoritosAtuais) =>
       favoritosAtuais.filter((p) => p.id !== id)
     );
   };
-  const ehFavorito = favoritos.some((item) => item.id === produto.id);
+
+  const ehFavorito =
+    isMounted && favoritos.some((item) => item.id === produto.id);
 
   const handleFavoritoClick = () => {
     if (ehFavorito) {
@@ -75,6 +86,7 @@ export default function CardProduto({
               }
               type="button"
               onClick={handleFavoritoClick}
+              disabled={!isMounted}
             >
               {ehFavorito ? "Remover Favorito" : "Favoritar"}
             </button>

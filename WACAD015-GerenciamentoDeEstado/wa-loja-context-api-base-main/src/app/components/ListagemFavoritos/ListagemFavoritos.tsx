@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { useFavoritos } from "@/app/state/FavoritosProvider";
 import { calculaValorComPorcentagemDeDesconto } from "@/app/helpers";
 import ItemFavorito from "../ItemFavorito/ItemFavorito";
@@ -5,7 +8,12 @@ import ItemFavorito from "../ItemFavorito/ItemFavorito";
 interface IListagemFavoritosProps {}
 
 export default function ListagemFavoritos({}: IListagemFavoritosProps) {
+  const [isMounted, setIsMounted] = useState(false);
   const { favoritos } = useFavoritos();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const valorTotalFavoritos = favoritos.reduce((acc, produto) => {
     return (
@@ -17,6 +25,20 @@ export default function ListagemFavoritos({}: IListagemFavoritosProps) {
     );
   }, 0);
 
+  if (!isMounted) {
+    return (
+      <div className="card mb-4">
+        <div className="row card-body">
+          <h5 className="card-title mb-4 fw-bold">Lista de favoritos:</h5>
+          <p>Carregando...</p>
+        </div>
+        <div className="card-footer d-flex flex-column">
+          <small className="text-muted">Quantidade de produtos: 0</small>
+          <small className="text-muted">Valor total: R$ 0.00</small>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="card mb-4">
       <div className="row card-body">
@@ -48,7 +70,6 @@ export default function ListagemFavoritos({}: IListagemFavoritosProps) {
         <small className="text-muted">
           Quantidade de produtos: {favoritos.length}
         </small>
-
         <small className="text-muted">
           Valor total: R$ {valorTotalFavoritos.toFixed(2)}
         </small>
