@@ -1,5 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { addProdutoFavorito, getProdutosFavoritos, removeProdutoFavorito } from "../services/produtos";
+import {
+  addProdutoFavorito,
+  getProdutosFavoritos,
+  removeProdutoFavorito,
+} from "../services/produtos";
 import { Produto } from "../types/produto";
 
 export function useAddFavorito(onSuccess: () => void, onError: () => void) {

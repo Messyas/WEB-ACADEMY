@@ -1,6 +1,17 @@
+"use client";
+
 import Link from "next/link";
 
+import React from "react";
+import { usePathname } from "next/navigation";
+
 export default function Navbar() {
+  const pathname = usePathname();
+  const rotasUsuariosDeslogados = ["/login", "/cadastro"];
+
+  if (rotasUsuariosDeslogados.includes(pathname)) {
+    return null;
+  }
   return (
     <nav className="navbar navbar-expand-md bg-light border-bottom border-body sticky-top">
       <div className="container-fluid">

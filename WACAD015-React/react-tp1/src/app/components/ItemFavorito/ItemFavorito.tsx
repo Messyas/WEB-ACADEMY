@@ -13,7 +13,7 @@ const itemFavorito = ({
   return (
     <tr key={itemFavorito.id}>
       <td>{itemFavorito.nome}</td>
-      <td>R$ {itemFavorito.preco.toFixed(2)}</td>
+      <td>R$ {Number(itemFavorito.preco).toFixed(2)}</td>
       <td>
         <button
           className="btn btn-danger btn-sm"

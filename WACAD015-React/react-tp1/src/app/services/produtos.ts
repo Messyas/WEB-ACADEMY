@@ -15,7 +15,7 @@ export async function getDetalhesProduto(
 
 export async function addProdutoFavorito(produto: Produto) {
   await new Promise((resolve) => setTimeout(resolve, 1000)); //simula delay de chamada real
-
+  
   return apiFavoritos
     .post<Produto>("/favoritos", produto)
     .then((response) => response.data);
