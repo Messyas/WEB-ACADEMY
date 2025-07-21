@@ -13,7 +13,7 @@ export async function getDetalhesProduto(
     .then((response) => response.data);
 }
 
-export async function addProdutoFavorito(produto: Produto) {
+export async function addFavorito(produto: Produto) {
   await new Promise((resolve) => setTimeout(resolve, 1000)); //simula delay de chamada real
   
   return apiFavoritos
@@ -21,11 +21,11 @@ export async function addProdutoFavorito(produto: Produto) {
     .then((response) => response.data);
 }
 
-export async function getProdutosFavoritos(): Promise<Produto[]> {
+export async function getFavoritos(): Promise<Produto[]> {
   return apiFavoritos.get("/favoritos").then((response) => response.data);
 }
 
-export async function removeProdutoFavorito(produtoId: string): Promise<void> {
+export async function removeFavorito(produtoId: string): Promise<void> {
   await new Promise((resolve) => setTimeout(resolve, 500)); // simula delay
   await apiFavoritos.delete(`/favoritos/${produtoId}`);
 }

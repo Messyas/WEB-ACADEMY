@@ -1,14 +1,15 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import {
-  addProdutoFavorito,
-  getProdutosFavoritos,
-  removeProdutoFavorito,
+  addFavorito,
+  getFavoritos,
+  removeFavorito,
 } from "../services/produtos";
 import { Produto } from "../types/produto";
+import { toast } from "react-toastify";
 
 export function useAddFavorito(onSuccess: () => void, onError: () => void) {
   const { mutate, isPending } = useMutation({
-    mutationFn: (produto: Produto) => addProdutoFavorito(produto),
+    mutationFn: (produto: Produto) => addFavorito(produto),
     onSuccess,
     onError,
   });
@@ -19,35 +20,35 @@ export function useAddFavorito(onSuccess: () => void, onError: () => void) {
   };
 }
 
-export function useGetFavoritos() {
-  const {
-    data: favoritos = [],
-    isPending,
-    isError,
-    refetch,
-  } = useQuery<Produto[]>({
+export function useFavoritos() {
+  const { data, isPending, isError, refetch } = useQuery({
     queryKey: ["favoritos"],
-    queryFn: getProdutosFavoritos,
+    queryFn: getFavoritos,
+    initialData: [],
   });
 
   return {
-    favoritos,
-    isPending,
-    isError,
+    favoritos: data,
     refetchFavoritos: refetch,
+    isCarregando: isPending,
+    isError,
   };
 }
 
-export function useRemoveFavorito(onSuccessExtra?: () => void) {
-  const queryClient = useQueryClient();
-
+export function useRemoveFavorito(refetchFavoritos: () => void) {
   const { mutate, isPending } = useMutation({
-    mutationFn: removeProdutoFavorito,
+    mutationFn: (id: string) => removeFavorito(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["favoritos"] });
-      if (onSuccessExtra) onSuccessExtra();
+      toast.success("Produto removido com sucesso!");
+      refetchFavoritos();
+    },
+    onError: () => {
+      toast.error("Erro ao remover o produto.");
     },
   });
 
-  return { removeFavorito: mutate, isPending };
+  return {
+    remover: mutate,
+    isRemovendo: isPending,
+  };
 }

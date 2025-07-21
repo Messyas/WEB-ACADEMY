@@ -1,21 +1,13 @@
 "use client";
 
 import React from "react";
-import {
-  useGetFavoritos,
-  useRemoveFavorito,
-} from "../hooks/useProdutoFavorito";
-import { toast } from "react-toastify";
+import { useFavoritos } from "../hooks/useProdutoFavorito";
 import ListagemFavoritos from "../components/ListagemFavoritos/ListagemFavotitos";
 
 export default function Favoritos() {
-  const { favoritos, isPending, isError } = useGetFavoritos();
+  const { favoritos, isCarregando, isError, refetchFavoritos } = useFavoritos();
 
-  const { removeFavorito } = useRemoveFavorito(() => {
-    toast.success("Produto removido com sucesso!");
-  });
-
-  if (isPending) {
+  if (isCarregando) {
     return (
       <div className="container p-5 text-center">
         <p>Carregando favoritos...</p>
@@ -34,10 +26,10 @@ export default function Favoritos() {
   return (
     <main>
       <div className="container p-5">
-        {favoritos && favoritos.length > 0 ? (
+        {favoritos.length > 0 ? (
           <ListagemFavoritos
             itensFavoritos={favoritos}
-            onRemoverFavorito={removeFavorito}
+            refetchFavoritos={refetchFavoritos}
           />
         ) : (
           <div className="text-center">

@@ -1,31 +1,35 @@
-import { produtoFavorito } from "../../types/favorito";
 import React from "react";
+import { useRemoveFavorito } from "../../hooks/useProdutoFavorito";
+import { Produto } from "../../types/produto";
 
 interface ItensFavoritoProps {
-  itemFavorito: produtoFavorito;
-  removerItemDosFavoritos: (id: string) => void;
+  itemFavorito: Produto;
+  refetchFavoritos: () => void;
 }
 
-const itemFavorito = ({
+const ItemFavorito = ({
   itemFavorito,
-  removerItemDosFavoritos,
+  refetchFavoritos,
 }: ItensFavoritoProps) => {
+  const { remover, isRemovendo } = useRemoveFavorito(refetchFavoritos);
+
   return (
-    <tr key={itemFavorito.id}>
+    <tr>
       <td>{itemFavorito.nome}</td>
       <td>R$ {Number(itemFavorito.preco).toFixed(2)}</td>
       <td>
         <button
           className="btn btn-danger btn-sm"
           onClick={() => {
-            removerItemDosFavoritos(itemFavorito.id);
+            remover(itemFavorito.id);
           }}
+          disabled={isRemovendo}
         >
-          Remover
+          {isRemovendo ? "Removendo..." : "Remover"}
         </button>
       </td>
     </tr>
   );
 };
 
-export default itemFavorito;
+export default ItemFavorito;
