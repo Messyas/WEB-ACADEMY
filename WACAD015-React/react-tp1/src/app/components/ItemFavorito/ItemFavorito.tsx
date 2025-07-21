@@ -1,17 +1,24 @@
 import React from "react";
-import { useRemoveFavorito } from "../../hooks/useProdutoFavorito";
 import { Produto } from "../../types/produto";
+import { toast } from "react-toastify";
+import { useRemoveFavorito } from "@/app/hooks/useProdutoFavorito";
+import { useQueryClient } from "@tanstack/react-query";
 
-interface ItensFavoritoProps {
+interface IItemFavoritoProps {
   itemFavorito: Produto;
   refetchFavoritos: () => void;
 }
 
-const ItemFavorito = ({
-  itemFavorito,
-  refetchFavoritos,
-}: ItensFavoritoProps) => {
-  const { remover, isRemovendo } = useRemoveFavorito(refetchFavoritos);
+export default function ItemFavorito({ itemFavorito }: IItemFavoritoProps) {
+  const queryClient = useQueryClient();
+
+  const { isPending, removeFavorito } = useRemoveFavorito(
+    () => {
+      toast.success("Produto removido com sucesso!");
+      queryClient.invalidateQueries({ queryKey: ["listaFavoritos"] });
+    },
+    () => toast.error("Algo deu errado ao remover o favorito")
+  );
 
   return (
     <tr>
@@ -20,16 +27,12 @@ const ItemFavorito = ({
       <td>
         <button
           className="btn btn-danger btn-sm"
-          onClick={() => {
-            remover(itemFavorito.id);
-          }}
-          disabled={isRemovendo}
+          onClick={() => removeFavorito(itemFavorito.id)}
+          style={{ minWidth: 120 }}
         >
-          {isRemovendo ? "Removendo..." : "Remover"}
+          {isPending ? "Removendo..." : "Remover"}
         </button>
       </td>
     </tr>
   );
-};
-
-export default ItemFavorito;
+}

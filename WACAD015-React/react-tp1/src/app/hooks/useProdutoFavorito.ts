@@ -1,54 +1,64 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   addFavorito,
   getFavoritos,
   removeFavorito,
 } from "../services/produtos";
 import { Produto } from "../types/produto";
-import { toast } from "react-toastify";
 
-export function useAddFavorito(onSuccess: () => void, onError: () => void) {
+export function useAddFavorito(onSuccess?: () => void, onError?: () => void) {
+  const queryClient = useQueryClient();
+
   const { mutate, isPending } = useMutation({
     mutationFn: (produto: Produto) => addFavorito(produto),
-    onSuccess,
-    onError,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["listaFavoritos"] });
+      if (onSuccess) onSuccess();
+    },
+    onError: () => {
+      if (onError) onError();
+    },
   });
 
   return {
-    addFavorito: mutate,
     isPending,
+    addFavorito: mutate,
   };
 }
 
 export function useFavoritos() {
   const { data, isPending, isError, refetch } = useQuery({
-    queryKey: ["favoritos"],
-    queryFn: getFavoritos,
-    initialData: [],
+    queryKey: ["listaFavoritos"],
+    queryFn: () => getFavoritos(),
   });
 
   return {
     favoritos: data,
     refetchFavoritos: refetch,
-    isCarregando: isPending,
+    isPending,
     isError,
   };
 }
 
-export function useRemoveFavorito(refetchFavoritos: () => void) {
+export function useRemoveFavorito(
+  onSuccess?: () => void,
+  onError?: () => void
+) {
+  const queryClient = useQueryClient();
+
   const { mutate, isPending } = useMutation({
     mutationFn: (id: string) => removeFavorito(id),
     onSuccess: () => {
-      toast.success("Produto removido com sucesso!");
-      refetchFavoritos();
+      queryClient.invalidateQueries({ queryKey: ["listaFavoritos"] });
+      if (onSuccess) onSuccess();
     },
     onError: () => {
-      toast.error("Erro ao remover o produto.");
+      if (onError) onError();
     },
   });
 
   return {
-    remover: mutate,
-    isRemovendo: isPending,
+    isPending,
+    removeFavorito: mutate,
   };
 }
