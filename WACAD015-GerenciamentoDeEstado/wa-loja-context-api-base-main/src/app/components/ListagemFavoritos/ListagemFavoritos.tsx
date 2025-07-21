@@ -1,16 +1,13 @@
+import { useFavoritos } from "@/app/state/FavoritosProvider";
 import { calculaValorComPorcentagemDeDesconto } from "@/app/helpers";
 import ItemFavorito from "../ItemFavorito/ItemFavorito";
 
-interface IListagemFavoritosProps {
-  produtosFavoritos: Produto[];
-  setFavoritos: React.Dispatch<React.SetStateAction<Produto[]>>;
-}
+interface IListagemFavoritosProps {}
 
-export default function ListagemFavoritos({
-  produtosFavoritos,
-  setFavoritos,
-}: IListagemFavoritosProps) {
-  const valorTotalFavoritos = produtosFavoritos.reduce((acc, produto) => {
+export default function ListagemFavoritos({}: IListagemFavoritosProps) {
+  const { favoritos } = useFavoritos();
+
+  const valorTotalFavoritos = favoritos.reduce((acc, produto) => {
     return (
       acc +
       calculaValorComPorcentagemDeDesconto(
@@ -25,7 +22,7 @@ export default function ListagemFavoritos({
       <div className="row card-body">
         <h5 className="card-title mb-4 fw-bold">Lista de favoritos:</h5>
 
-        {produtosFavoritos.length > 0 ? (
+        {favoritos.length > 0 ? (
           <div className="table-responsive">
             <table className="table table-borderless">
               <thead>
@@ -37,12 +34,8 @@ export default function ListagemFavoritos({
                 </tr>
               </thead>
               <tbody>
-                {produtosFavoritos.map((item) => (
-                  <ItemFavorito
-                    key={item.id}
-                    itemFavorito={item}
-                    setFavoritos={setFavoritos}
-                  />
+                {favoritos.map((item) => (
+                  <ItemFavorito key={item.id} itemFavorito={item} />
                 ))}
               </tbody>
             </table>
@@ -53,11 +46,11 @@ export default function ListagemFavoritos({
       </div>
       <div className="card-footer d-flex flex-column">
         <small className="text-muted">
-          Quantidade de produtos: {produtosFavoritos.length}
+          Quantidade de produtos: {favoritos.length}
         </small>
 
         <small className="text-muted">
-          Valor total: R$ {valorTotalFavoritos}
+          Valor total: R$ {valorTotalFavoritos.toFixed(2)}
         </small>
       </div>
     </div>

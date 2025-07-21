@@ -1,14 +1,14 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
-interface IFavoritos {
+interface IFavoritosContext {
   favoritos: Produto[];
   setFavoritos: React.Dispatch<React.SetStateAction<Produto[]>>;
 }
 
-export const FavoritoContent = createContext<IFavoritos>({
-  favoritos: [] as Produto[],
+export const FavoritosContext = createContext<IFavoritosContext>({
+  favoritos: [],
   setFavoritos: () => {},
 });
 
@@ -16,18 +16,36 @@ interface FavoritosProviderProps {
   children: React.ReactNode;
 }
 
-const FavoritosProvider = ({ children }: FavoritosProviderProps) => {
-  const [favoritos, setFavoritos] = useState<Produto[]>([]);
-  const values = {
-    favoritos,
-    setFavoritos,
-  };
+export default function FavoritosProvider({
+  children,
+}: FavoritosProviderProps) {
+  const [favoritos, setFavoritos] = useState<Produto[]>(() => {
+    if (typeof window !== "undefined") {
+      const favoritosSalvos = localStorage.getItem("favoritos");
+      if (favoritosSalvos) {
+        return JSON.parse(favoritosSalvos);
+      }
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    }
+  }, [favoritos]);
 
   return (
-    <FavoritoContent.Provider value={values}>
+    <FavoritosContext.Provider value={{ favoritos, setFavoritos }}>
       {children}
-    </FavoritoContent.Provider>
+    </FavoritosContext.Provider>
   );
-};
+}
 
-export default FavoritosProvider;
+export const useFavoritos = () => {
+  const context = useContext(FavoritosContext);
+  if (context === undefined) {
+    throw new Error("Erro");
+  }
+  return context;
+};
