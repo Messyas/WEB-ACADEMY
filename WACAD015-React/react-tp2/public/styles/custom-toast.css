@@ -1,0 +1,32 @@
+/*Animacao de progresso do react toastify*/
+@keyframes Toastify__trackProgress {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+/*Animacao da barra de progresso*/
+@keyframes rgbProgress {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/*Sobrescreve a lib*/
+.Toastify__progress-bar.rgb-progress-bar {
+  /*cores da animacao*/
+  background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+  background-size: 400% 400%;
+  
+  /*Animacoes*/
+  animation: 
+    /*Animacao da barra*/
+    Toastify__trackProgress linear 1,
+    /*Animacao para mudar o background barra de progresso*/
+    rgbProgress 3s linear infinite;
+
+  transform-origin: left; 
+}
