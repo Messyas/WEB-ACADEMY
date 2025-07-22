@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1753191313465" clover="3.2.0">
+  <project timestamp="1753191313465" name="All files">
+    <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4" elements="21" coveredelements="21" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1"/>
+    <file name="validacoes.js" path="/home/messyas/Projetos/webacad/WEB-ACADEMY/WACAD016-Fundamentos de Teste de Software/myapp_test-main/src/utils/validacoes.js">
+      <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
+      <line num="9" count="4" type="stmt"/>
+      <line num="10" count="4" type="stmt"/>
+      <line num="11" count="4" type="stmt"/>
+      <line num="24" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="29" count="6" type="stmt"/>
+      <line num="37" count="6" type="stmt"/>
+      <line num="38" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="39" count="1" type="stmt"/>
+      <line num="41" count="5" type="stmt"/>
+      <line num="60" count="5" type="stmt"/>
+      <line num="61" count="9" type="stmt"/>
+      <line num="66" count="3" type="stmt"/>
+    </file>
+  </project>
+</coverage>

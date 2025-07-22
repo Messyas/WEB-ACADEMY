@@ -4,11 +4,11 @@
  * @param {string} nomeCompleto - O nome completo do usuário, separado por espaços.
  * @returns {string} - O primeiro nome extraído do nome completo ou o próprio nome caso não haja espaços.
  */
-function primeiroNome(nomeCompleto) {
-  const espacoEmBranco = nomeCompleto.lastIndexOf(" ");
 
-  if (espacoEmBranco === -1) return nomeCompleto;
-  else return nomeCompleto.slice(0, espacoEmBranco);
+function primeiroNome(nomeCompleto) {
+  const nomeCompletoSemEspacos = nomeCompleto.trim();
+  const nomeEmArray = nomeCompletoSemEspacos.split(" ");
+  return nomeEmArray[0];
 }
 
 /**
@@ -19,7 +19,13 @@ function primeiroNome(nomeCompleto) {
  * @returns {boolean} - Retorna true se a quantidade desejada do tipo de produto especificado estiver disponível
  *                      no estoque, caso contrário retorna false.
  */
+
 function verificarDisponibilidadeEstoque(tipoProduto, quantidade) {
+  if (quantidade < 0) {
+    return false;
+  }
+
+  //pensei em transformar isso em mock, so 
   const estoque = {
     laptop: 10,
     smartphone: 20,
@@ -29,8 +35,10 @@ function verificarDisponibilidadeEstoque(tipoProduto, quantidade) {
   };
 
   const estoqueDisponivel = estoque[tipoProduto];
-  if (estoqueDisponivel === 0) return false;
-  else return true;
+  if (estoqueDisponivel === undefined) {
+    return false;
+  }
+  return estoqueDisponivel >= quantidade;
 }
 
 /**
@@ -47,12 +55,12 @@ function verificarDisponibilidadeEstoque(tipoProduto, quantidade) {
  *     { nome: 'Produto 3', preco: 20, quantidade: 1 }
  *   ]
  */
+
 function calcularPrecoTotal(produtos) {
-  let total = 0;
-  for (let i = 0; i < produtos.length; i++) {
-    total = produtos[i].price;
-  }
-  return total;
+  return produtos.reduce(
+    (acumulador, produto) => acumulador + produto.price,
+    0
+  );
 }
 
 module.exports = {
