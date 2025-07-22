@@ -7,3 +7,7 @@ export const produtosApi = axios.create({
 export const apiFavoritos = axios.create({
   baseURL: "https://favoritos-json-server-main-zeta.vercel.app/",
 });
+
+export const apiDetalhes = axios.create({
+  baseURL: "https://ranekapi.origamid.dev/json/api"
+});
