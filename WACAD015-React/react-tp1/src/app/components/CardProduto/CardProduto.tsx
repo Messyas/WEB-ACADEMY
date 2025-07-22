@@ -19,14 +19,12 @@ const CardProduto = ({ produto, adicionarAoCarrinho }: CardProdutoProps) => {
   return (
     <div className="col">
       <div className="card shadow-sm h-100">
-       
         <Link href={`/produto/${produto.nome}`} passHref>
           <Image
             src={produto.fotos[0].src}
             alt={produto.fotos[0].titulo}
             width={300}
             height={320}
-            className="card-img-top"
             style={{ cursor: "pointer" }}
           />
         </Link>

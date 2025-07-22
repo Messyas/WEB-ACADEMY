@@ -5,16 +5,8 @@ export async function getListaProduto(): Promise<Produto[]> {
   return produtosApi.get("/produto").then((response) => response.data);
 }
 
-export async function getDetalhesProduto(
-  nomeProduto: string
-): Promise<Produto> {
-  return produtosApi
-    .get(`/produto/${nomeProduto}`)
-    .then((response) => response.data);
-}
-
 //usa a api dos slides
-export async function pegarDetalhesProduto(
+export async function getDetalhesProduto(
   nomeProduto: string
 ): Promise<Produto> {
   return apiDetalhes
