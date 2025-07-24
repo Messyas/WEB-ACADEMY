@@ -1,11 +1,11 @@
 import CardProduto from "../CardProduto/CardProduto";
-import ListagemFavoritos from "../ListagemFavoritos/ListagemFavoritos";
+import ResumoFavoritos from "../ResumoFavoritos/ResumoFavoritos";
 
-interface IListagemProdutosProps {
+interface IListagemProdutos {
   produtos: Produto[];
 }
 
-export default function ListagemProdutos({ produtos }: IListagemProdutosProps) {
+export default function ListagemProdutos({ produtos }: IListagemProdutos) {
   return (
     <div className="row row-cols-1 row-cols-lg-2">
       <div className="col-lg-9">
@@ -18,7 +18,7 @@ export default function ListagemProdutos({ produtos }: IListagemProdutosProps) {
       </div>
 
       <div className="col-lg-3">
-        <ListagemFavoritos />
+        <ResumoFavoritos />
       </div>
     </div>
   );

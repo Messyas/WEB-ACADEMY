@@ -1,8 +1,19 @@
 "use client";
 
+import { useAuth } from "@/app/states/AuthProvider";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const { userEmail, logout } = useAuth();
+
+  const pathname = usePathname();
+  const rotasUsuariosDeslogados = ["/login", "/cadastro"];
+
+  if (rotasUsuariosDeslogados.includes(pathname)) {
+    return null;
+  }
+
   return (
     <nav className="navbar navbar-expand-md bg-light border-bottom border-body sticky-top">
       <div className="container-fluid">
@@ -34,11 +45,18 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <Link className="nav-link " href="/login">
-            <button type="button" className="btn btn-secondary">
+          <div className="d-flex align-items-center gap-3 ms-auto">
+            {userEmail && (
+              <span className="text-muted small me-2">{userEmail}</span>
+            )}
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={logout}
+            >
               Sair
             </button>
-          </Link>
+          </div>
         </div>
       </div>
     </nav>
