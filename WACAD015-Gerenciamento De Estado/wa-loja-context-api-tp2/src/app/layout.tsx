@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BootstrapClient from "./components/BootstrapClient";
 import Navbar from "./components/Navbar/Navbar";
-import FavoritosProvider from "./state/FavoritosProvider";
+import FavoritosProvider from "./states/FavoritosProvider";
+import { AuthProvider } from "./states/AuthProvider";
 
 export const metadata: Metadata = {
   title: "WA Loja",
@@ -16,11 +17,13 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
-        <FavoritosProvider>
-          <Navbar />
-          {children}
-          <BootstrapClient />
-        </FavoritosProvider>
+        <AuthProvider>
+          <FavoritosProvider>
+            <Navbar />
+            {children}
+            <BootstrapClient />
+          </FavoritosProvider>
+        </AuthProvider>
       </body>
     </html>
   );

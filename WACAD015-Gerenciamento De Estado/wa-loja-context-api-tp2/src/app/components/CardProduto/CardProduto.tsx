@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useFavoritos } from "@/app/state/FavoritosProvider";
-import { calculaValorComPorcentagemDeDesconto } from "@/app/helpers";
+import { calculaValorComPorcentagemDeDesconto } from "@/app/helpers/calculaPorcentagemDesconto";
 import Image from "next/image";
+import useFavoritosContext from "@/app/hooks/useFavoritosContext"; // importa o hook
 
 interface CardProdutoProps {
   produto: Produto;
@@ -16,33 +15,8 @@ export default function CardProduto({
   mostrarImagem = true,
   mostrarBotao = true,
 }: CardProdutoProps) {
-  const { favoritos, setFavoritos } = useFavoritos();
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  const adicionarAosFavoritos = (produto: Produto) => {
-    setFavoritos((favoritosAtuais) => [...favoritosAtuais, produto]);
-  };
-
-  const removerDosFavoritos = (id: string) => {
-    setFavoritos((favoritosAtuais) =>
-      favoritosAtuais.filter((p) => p.id !== id)
-    );
-  };
-
-  const ehFavorito =
-    isMounted && favoritos.some((item) => item.id === produto.id);
-
-  const handleFavoritoClick = () => {
-    if (ehFavorito) {
-      removerDosFavoritos(produto.id);
-    } else {
-      adicionarAosFavoritos(produto);
-    }
-  };
+  const { favoritos, adicionar, remover } = useFavoritosContext();
+  const ehFavorito = favoritos.some((item) => item.id === produto.id);
 
   return (
     <div className="col">
@@ -83,8 +57,13 @@ export default function CardProduto({
                   : "btn btn-outline-success d-block w-100 mt-3"
               }
               type="button"
-              onClick={handleFavoritoClick}
-              disabled={!isMounted}
+              onClick={() => {
+                if (ehFavorito) {
+                  remover(produto.id);
+                } else {
+                  adicionar(produto);
+                }
+              }}
             >
               {ehFavorito ? "Remover Favorito" : "Favoritar"}
             </button>
