@@ -47,7 +47,7 @@ export default function ListagemFavoritos() {
         </small>
 
         <small className="text-muted">
-          Valor total: R$ {valorTotalFavoritos}
+          Valor total: R$ {(valorTotalFavoritos || 0).toFixed(2)}
         </small>
       </div>
     </div>

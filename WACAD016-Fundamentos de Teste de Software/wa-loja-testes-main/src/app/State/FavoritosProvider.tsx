@@ -34,9 +34,7 @@ export const useFavoritosContext = () => {
 
 export const useProdutoFavorito = (id: string) => {
   const { favoritos } = useContext(FavoritosContext);
-
   const produtoFavorito = favoritos.some((item) => item.id === id);
-
   return produtoFavorito;
 };
 

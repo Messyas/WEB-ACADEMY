@@ -8,10 +8,13 @@ import {
 } from "../../../State/FavoritosProvider";
 import { calculaValorComPorcentagemDeDesconto } from "@/app/helpers";
 
-jest.mock("../../../State/FavoritosProvider", () => ({
-  ...jest.requireActual("../../../State/FavoritosProvider"),
-  useProdutoFavorito: jest.fn(),
-}));
+jest.mock("../../../State/FavoritosProvider", () => {
+  const actual = jest.requireActual("@/app/State/FavoritosProvider");
+  return {
+    ...actual,
+    useProdutoFavorito: jest.fn(),
+  };
+});
 
 describe("CardProduto", () => {
   it("deve renderizar corretamente as informações de produto", () => {
