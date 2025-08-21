@@ -2,81 +2,39 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# ======================
-# Configuração da Página
-# ======================
 st.set_page_config(page_title="Dashboard Usuários", layout="wide")
 
-# ======================
-# Estilo Personalizado
-# ======================
-st.markdown("""
-    <style>
-        .main {
-            background-color: #1E3A5F;
-            color: #F0F4F8;
-        }
-        .stTabs [role="tablist"] button {
-            font-weight: bold;
-            border-radius: 8px;
-            padding: 6px 12px;
-            background-color: #274472;
-            color: white;
-        }
-        .stTabs [role="tablist"] button[aria-selected="true"] {
-            background-color: #41729F;
-            color: #FFFFFF;
-        }
-        /* Estilo da Sidebar */
-        [data-testid="stSidebar"] {
-            background-color: #1E3A5F;
-        }
-    </style>
-""", unsafe_allow_html=True)
+@st.cache_data
+def carregar_dados():
+    try:
+        df = pd.read_csv("usuarios_limpo.csv", parse_dates=["data_cadastro"])
+        return df
+    except FileNotFoundError:
+        st.error("Erro: O arquivo 'usuarios_limpo.csv' não foi encontrado.")
+        st.stop()
+
+df = carregar_dados()
 
 # ======================
-# Carregando Dados (Exemplo)
-# ======================
-# No seu caso, você usaria: df = pd.read_csv("usuarios_limpo.csv", parse_dates=["data_cadastro"])
-data = {
-    'user_id': range(365),
-    'estado': ['SP', 'RJ', 'MG', 'BA', 'AM', 'RJ', 'RS', 'PE', 'CE', 'PR'] * 36 + ['SP', 'RJ', 'MG', 'BA', 'AM'],
-    'data_cadastro': pd.to_datetime(pd.date_range('2023-01-01', periods=365, freq='D')),
-    'valor_ultima_compra': [150, 200, 120, 300, 50, 250, 80, 180, 220, 130] * 36 + [150, 200, 120, 300, 50]
-}
-df = pd.DataFrame(data)
-df['data_cadastro'] = pd.to_datetime(df['data_cadastro'])
-
-# ======================
-# Barra Lateral (Sidebar) com Filtros
+# Barra lateral
 # ======================
 st.sidebar.header("Filtros")
 
-# Obter lista única de estados para o filtro
 lista_estados = sorted(df['estado'].unique())
 
-# Filtro multiselect para estados
 estados_selecionados = st.sidebar.multiselect(
     "Selecione o Estado",
     options=lista_estados,
-    default=lista_estados  # Por padrão, todos os estados são selecionados
+    default=lista_estados
 )
 
-# --- Filtrar o DataFrame com base na seleção ---
-if estados_selecionados:
-    df_filtrado = df[df['estado'].isin(estados_selecionados)]
-else:
-    # Se nada for selecionado, usa o dataframe completo para não quebrar os gráficos
-    df_filtrado = df.copy()
+if not estados_selecionados:
+    estados_selecionados = lista_estados
 
-# ======================
-# Gráficos (agora usando df_filtrado)
-# ======================
+df_filtrado = df[df['estado'].isin(estados_selecionados)]
 
-# Mapa coroplético
-# Este gráfico não precisa ser filtrado, pois ele mostra a visão geral.
-# Mas podemos destacar os estados selecionados se quisermos.
-usuarios_por_estado = df['estado'].value_counts().reset_index()
+# --- Mapa ---
+usuarios_por_estado = df_filtrado['estado'].value_counts().reset_index()
 usuarios_por_estado.columns = ['estado', 'quantidade']
 fig_mapa = px.choropleth(
     usuarios_por_estado,
@@ -86,39 +44,57 @@ fig_mapa = px.choropleth(
     color='quantidade',
     color_continuous_scale="Blues",
     scope="south america",
-    title="Distribuição de Usuários por Estado"
+    title="Distribuição de Usuários por Estado",
+    labels={'quantidade': 'Nº de Usuários'},
+    template="streamlit" 
 )
-fig_mapa.update_geos(fitbounds="locations", visible=False)
+
+fig_mapa.update_geos(fitbounds="locations", visible=False, bgcolor="rgba(0,0,0,0)")
+fig_mapa.update_layout(height=525, margin={"r":0,"t":30,"l":0,"b":1})
 
 
 # Histograma de valores
 fig_hist_valor = px.histogram(
     df_filtrado, x="valor_ultima_compra", nbins=30, title="Distribuição do Valor das Compras",
-    color_discrete_sequence=["#4A90E2"]
+    labels={'valor_ultima_compra': 'Valor da Compra (R$)'},
+    template="streamlit" 
 )
 
-# Boxplot por estado
+# Grafico de boxplot por estado
 fig_box_valor_estado = px.box(
     df_filtrado, x="estado", y="valor_ultima_compra", title="Distribuição de Compras por Estado",
-    color_discrete_sequence=["#50C878"]
+    labels={
+        'valor_ultima_compra': 'Valor da Compra (R$)',
+        'estado': 'Estado'
+    },
+    template="streamlit"
 )
 
-# Valor médio ao longo do tempo
+# Grafico do valor medio ao longo do tempo 
 df_filtrado["mes"] = df_filtrado["data_cadastro"].dt.to_period("M").astype(str)
 valor_medio = df_filtrado.groupby("mes")["valor_ultima_compra"].mean().reset_index()
 fig_valor_medio_mes = px.line(
     valor_medio, x="mes", y="valor_ultima_compra", markers=True,
     title="Evolução do Valor Médio das Compras",
-    color_discrete_sequence=["#F5A623"]
+    labels={
+        'valor_ultima_compra': 'Valor Médio da Compra (R$)',
+        'mes': 'Mês'
+    },
+    template="streamlit" 
 )
 
-# Evolução dos cadastros
-df_copy = df_filtrado.copy() 
+# Evolucao dos cadastros
+df_copy = df_filtrado.copy()
 df_copy["mes_cadastro"] = df_copy["data_cadastro"].dt.to_period("M").astype(str)
 cadastros_por_mes = df_copy.groupby("mes_cadastro").size().reset_index(name="Cadastros")
 fig_evolucao = px.line(
     cadastros_por_mes, x="mes_cadastro", y="Cadastros", markers=True,
-    title="Evolução dos Cadastros", color_discrete_sequence=["#FF6F61"]
+    title="Evolução dos Cadastros",
+    labels={
+        'mes_cadastro': 'Mês do Cadastro',
+        'Cadastros': 'Nº de Novos Cadastros'
+    },
+    template="streamlit"
 )
 
 # Heatmap de cadastros por hora e dia da semana
@@ -131,7 +107,13 @@ dias_ordenados = ["Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","
 cadastros_semana_hora["dia_semana"] = pd.Categorical(cadastros_semana_hora["dia_semana"], categories=dias_ordenados, ordered=True)
 fig_heatmap_atividade = px.density_heatmap(
     cadastros_semana_hora, x="hora", y="dia_semana", z="cadastros",
-    color_continuous_scale="Blues", title="Concentração de Cadastros por Dia e Hora"
+    title="Concentração de Cadastros por Dia e Hora",
+    labels={
+        'hora': 'Hora do Dia',
+        'dia_semana': 'Dia da Semana',
+        'cadastros': 'Nº de Cadastros'
+    },
+    template="streamlit"
 )
 
 # ======================
@@ -153,7 +135,6 @@ with aba2:
     with col2:
         st.plotly_chart(fig_box_valor_estado, use_container_width=True)
 
-    st.subheader("Evolução do Valor Médio das Compras")
     st.plotly_chart(fig_valor_medio_mes, use_container_width=True)
 
 with aba3:
